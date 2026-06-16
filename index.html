@@ -215,26 +215,28 @@ function proximaPergunta() {
     }
 
     if (perguntaAtual >= perguntas.length) {
-       const quiz = document.getElementById("quizNamoro");
+        const quiz = document.getElementById("quizNamoro");
 
-quiz.classList.add("celebracao");
+        quiz.classList.add("celebracao");
 
-quiz.innerHTML =
-    "<h1>❤️ Alice, você oficialmente é minha namorada ❤️</h1>" +
-    "<p>Você acabou de me fazer a pessoa mais feliz do mundo.</p>" +
-    "<h2>❤️ Eu te amo infinitamente ❤️</h2>";
+        quiz.innerHTML =
+            "<h1>❤️ Alice, você oficialmente é minha namorada ❤️</h1>" +
+            "<p>Você acabou de me fazer a pessoa mais feliz do mundo.</p>" +
+            "<h2>❤️ Eu te amo infinitamente ❤️</h2>";
 
-for (let i = 0; i < 80; i++) {
-    setTimeout(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = ['❤️','💖','💕','💗'][Math.floor(Math.random()*4)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = (20 + Math.random()*25) + 'px';
-        document.body.appendChild(heart);
+        for (let i = 0; i < 80; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = ['❤️','💖','💕','💗'][Math.floor(Math.random()*4)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (20 + Math.random()*25) + 'px';
+                document.body.appendChild(heart);
 
-        setTimeout(() => heart.remove(), 6000);
-    }, i * 40);
+                setTimeout(() => heart.remove(), 6000);
+            }, i * 40);
+        }
+    }
 }
 
 function tocarMusica() {
