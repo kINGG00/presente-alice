@@ -96,7 +96,15 @@ button {
 .quiz-caixa button {
     margin: 8px;
 }
-    
+    @keyframes celebrar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.celebracao {
+    animation: celebrar 1s ease-in-out;
+}
 </style>
 </head>
 
@@ -207,9 +215,26 @@ function proximaPergunta() {
     }
 
     if (perguntaAtual >= perguntas.length) {
-        document.getElementById("quizNamoro").innerHTML =
-            "<h1>❤️ Agora você é oficialmente minha namorada ❤️</h1><p>Eu te amo muito, Alice.</p>";
-    }
+       const quiz = document.getElementById("quizNamoro");
+
+quiz.classList.add("celebracao");
+
+quiz.innerHTML =
+    "<h1>💍 Alice, você oficialmente é minha namorada ❤️</h1>" +
+    "<p>Você acabou de me fazer a pessoa mais feliz do mundo.</p>" +
+    "<h2>❤️ Eu te amo infinitamente ❤️</h2>";
+
+for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = ['❤️','💖','💕','💗'][Math.floor(Math.random()*4)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (20 + Math.random()*25) + 'px';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, i * 40);
 }
 
 function tocarMusica() {
