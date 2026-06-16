@@ -109,6 +109,15 @@ EU TE AMO MUUUUUUITO!! Obrigado por ser você, por estar ao meu lado e por torna
         
     </p>
 
+<div id="quizNamoro">
+    <h2 id="pergunta">Você gosta de mim? ❤️</h2>
+
+    <button onclick="proximaPergunta()">Sim ❤️</button>
+    <button onclick="proximaPergunta()">Claro que sim ❤️</button>
+</div>
+
+<br>
+
     <button onclick="tocarMusica()">Música favoria do meu amor ❤️ 🎵</button>
 
     <audio id="musica" loop>
@@ -149,6 +158,39 @@ function criarCoracao() {
 }
 
 setInterval(criarCoracao, 300);
+
+const perguntas = [
+    "Você gosta de mim? ❤️",
+    "Você gosta de passar tempo comigo? 🥰",
+    "Eu faço você feliz? 💕",
+    "Você quer continuar criando memórias comigo? ✨",
+    "Então só falta uma última pergunta... 💌",
+    "Alice, você aceita namorar comigo? ❤️💍"
+];
+
+let perguntaAtual = 0;
+
+function proximaPergunta() {
+    perguntaAtual++;
+
+    if (perguntaAtual < perguntas.length) {
+        document.getElementById("pergunta").innerHTML =
+            perguntas[perguntaAtual];
+    }
+
+    if (perguntaAtual === perguntas.length - 1) {
+        document.querySelector("#quizNamoro button:nth-child(2)").innerHTML =
+            "Sim, eu aceito ❤️";
+
+        document.querySelector("#quizNamoro button:nth-child(3)").innerHTML =
+            "Claro que aceito 💍";
+    }
+
+    if (perguntaAtual >= perguntas.length) {
+        document.getElementById("quizNamoro").innerHTML =
+            "<h1>❤️ Agora você é oficialmente minha namorada ❤️</h1><p>Eu te amo muito, Alice.</p>";
+    }
+}
 
 function tocarMusica() {
     document.getElementById("musica").play();
