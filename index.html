@@ -1,10 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <title>Eu te amo minha princesa ❤️</title>
 
-<style> 
+<style>
+
+* {
+    box-sizing: border-box;
+}
 
 p, h2, h3, span, div {
     color: #ff4da6;
@@ -20,45 +25,93 @@ body {
     overflow-x: hidden;
 }
 
+/* CARD PRINCIPAL */
 .card {
+    width: 90%;
     max-width: 800px;
     margin: 50px auto;
     padding: 30px;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
     border-radius: 25px;
     box-shadow: 0 0 30px #ff4da6;
 }
 
+/* TÍTULO */
 h1 {
     color: #ff4da6;
     font-size: 42px;
+    margin: 0 0 25px;
 }
 
+/* TEXTOS */
 p {
     font-size: 20px;
     line-height: 1.6;
-    text-align: left;
 }
 
-img {
-    width: 250px;
-    border-radius: 20px;
-    margin: 10px;
-    box-shadow: 0 0 15px #ff8ac8;
+/* TEXTO INICIAL */
+.introducao {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* SEÇÃO DO CONTADOR */
+.contador-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contador-section h2 {
+    margin: 12px 0;
 }
 
 #contador {
     font-size: 26px;
     color: #ff1493;
-    margin: 25px 0;
+    margin: 15px 0 25px;
+    text-align: center;
 }
 
+/* FOTO */
+.foto-casal {
+    display: block;
+    width: 250px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 10px auto 30px;
+    box-shadow: 0 0 15px #ff8ac8;
+}
+
+/* MENSAGEM */
+.mensagem {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.mensagem h2 {
+    text-align: center;
+    margin: 10px 0 20px;
+}
+
+.mensagem p {
+    margin: 0;
+    text-align: left;
+}
+
+/* CORAÇÕES */
 .heart {
     position: fixed;
     top: -10px;
     color: #ff69b4;
     font-size: 24px;
     animation: cair 6s linear infinite;
+    pointer-events: none;
 }
 
 @keyframes cair {
@@ -68,6 +121,7 @@ img {
     }
 }
 
+/* BOTÕES */
 button {
     background: #ff4da6;
     color: white;
@@ -77,9 +131,16 @@ button {
     font-size: 18px;
     cursor: pointer;
 }
-    .quiz-caixa {
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* QUIZ */
+.quiz-caixa {
+    width: 100%;
     max-width: 600px;
-    margin: 30px auto;
+    margin: 35px auto;
     padding: 25px;
     background: rgba(0, 0, 0, 0.75);
     border: 2px solid #ff4da6;
@@ -96,90 +157,194 @@ button {
 .quiz-caixa button {
     margin: 8px;
 }
-    @keyframes celebrar {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
+
+/* ANIMAÇÃO FINAL */
+@keyframes celebrar {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .celebracao {
     animation: celebrar 1s ease-in-out;
 }
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+    .card {
+        width: 94%;
+        padding: 20px;
+        margin: 25px auto;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    #contador {
+        font-size: 21px;
+    }
+
+    .foto-casal {
+        width: 230px;
+        height: 200px;
+    }
+
+    .quiz-caixa {
+        padding: 20px 15px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
-    
-
-</div>
 
 <div class="card">
+
     <h1>Para o meu eterno amor ❤️</h1>
 
-    <p>
-        Minha princesa. Você mudou minha forma de pensar e ver o amor obrigado por isso.
+    <p class="introducao">
+        Minha princesa. Você mudou minha forma de pensar e ver o amor,
+        obrigado por isso. Você é perfeitamente esplêndida.
     </p>
 
-    <h2>Estamos juntinhos há:</h2>
-    <div id="contador"></div>
+    <!-- CONTADOR -->
+    <div class="contador-section">
 
-    <h2>Nós juntinhos bem fofos ❤️ 📸</h2>
+        <h2>Estamos juntinhos há:</h2>
 
-    <img src="foto1.jpg" alt="Nossa foto 1">
-    
-    <h2>Mensagem para a minha princesa</h2>
+        <div id="contador"></div>
 
-    <p> 
-        Oie minha princesa, mais um mês com você... 4 meses ao total, meses esses que estou conhecendo mais sobre a pessoa com quem eu vou passar a minha vida ao lado, sinceramente eu não tenho dúvidas do meu amor por você,
-        4 meses de muitos sentimentos foi como uma montanha russa de sentimentos, uma experiência nova para nós dois... desafios para testar nossa confiança, fé e o amor um pelo o outro. Apesar de tudo ainda estamos aqui,
-        juntos e se amando como se fosse a primeira vez, pra mim isso é muito importante, por que eu sei que nada é fácil nessa vida. Mas ter uma pessoa que te ama ao lado facilita um pouco as coisas. Independente da distância
-        que é algo passageiro, o nosso amor é real o esforço, companhia e o respeito são verdadeiros. Temos um caminho dificil pela frente como qualquer um casal e o importante é colocarmos nossa cabeça no objetivo e se apoiar um no outro.
-        Saiba que sempre vou estar aqui para você e por você! Nunca se esqueça do quanto incrível você é, o seu jeitinho é especial, diferente e único. Sou feliz em ter você comigo obrigado meu amor! Eu te amo com todo o meu coração.
-        Minha princesinha linda! Obrigado por ter sido curiosa e ter se aproximado de mim.
-        
-    </p>
+        <h2>Nós juntinhos bem fofos ❤️ 📸</h2>
 
-<div id="quizNamoro" class="quiz-caixa">
-    <h2 id="pergunta">Você me ama? ❤️</h2>
+        <img
+            src="foto1.jpg"
+            alt="Nossa foto"
+            class="foto-casal"
+        >
 
-    <button onclick="proximaPergunta()">Sim ❤️</button>
-    <button onclick="proximaPergunta()">Claro que sim ❤️</button>
-</div>
+    </div>
 
-<br>
+    <!-- MENSAGEM -->
+    <div class="mensagem">
 
-    <button onclick="tocarMusica()">Música favorita do meu amor ❤️ 🎵</button>
+        <h2>Mensagem para a minha princesa</h2>
+
+        <p>
+            Oie minha princesa, mais um mês com você... 4 meses ao total,
+            meses esses que estou conhecendo mais sobre a pessoa com quem
+            eu vou passar a minha vida ao lado, sinceramente eu não tenho
+            dúvidas do meu amor por você, 4 meses de muitos sentimentos foi
+            como uma montanha russa de sentimentos, uma experiência nova para
+            nós dois... desafios para testar nossa confiança, fé e o amor um
+            pelo outro. Apesar de tudo ainda estamos aqui, juntos e se amando
+            como se fosse a primeira vez, pra mim isso é muito importante,
+            por que eu sei que nada é fácil nessa vida. Mas ter uma pessoa
+            que te ama ao lado facilita um pouco as coisas. Independente da
+            distância que é algo passageiro, o nosso amor é real, o esforço,
+            companhia e o respeito são verdadeiros. Temos um caminho difícil
+            pela frente como qualquer casal e o importante é colocarmos nossa
+            cabeça no objetivo e se apoiar um no outro.
+
+            Saiba que sempre vou estar aqui para você e por você! Nunca se
+            esqueça do quanto incrível você é, o seu jeitinho é especial,
+            diferente e único. Sou feliz em ter você comigo, obrigado meu
+            amor! Eu te amo com todo o meu coração. Minha princesinha linda!
+            Obrigado por ter sido curiosa e ter se aproximado de mim.
+        </p>
+
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quizNamoro" class="quiz-caixa">
+
+        <h2 id="pergunta">Você me ama? ❤️</h2>
+
+        <button onclick="proximaPergunta()">Sim ❤️</button>
+        <button onclick="proximaPergunta()">Claro que sim ❤️</button>
+
+    </div>
+
+    <br>
+
+    <!-- MÚSICA -->
+    <button onclick="tocarMusica()">
+        Música favorita do meu amor ❤️ 🎵
+    </button>
 
     <audio id="musica" loop>
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
+
 </div>
 
 <script>
+
 const dataInicio = new Date("2026-04-12T00:00:00");
 
 function atualizarContador() {
+
     const agora = new Date();
     const diferenca = agora - dataInicio;
 
-    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
-    const segundos = Math.floor((diferenca / 1000) % 60);
+    const dias = Math.floor(
+        diferenca / (1000 * 60 * 60 * 24)
+    );
+
+    const horas = Math.floor(
+        (diferenca / (1000 * 60 * 60)) % 24
+    );
+
+    const minutos = Math.floor(
+        (diferenca / (1000 * 60)) % 60
+    );
+
+    const segundos = Math.floor(
+        (diferenca / 1000) % 60
+    );
 
     document.getElementById("contador").innerHTML =
-        dias + " dias, " + horas + " horas, " + minutos + " minutos e " + segundos + " segundos";
+        dias + " dias, " +
+        horas + " horas, " +
+        minutos + " minutos e " +
+        segundos + " segundos";
 }
 
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
+
+/* CORAÇÕES CAINDO */
+
 function criarCoracao() {
+
     const heart = document.createElement("div");
+
     heart.classList.add("heart");
+
     heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (Math.random() * 3 + 3) + "s";
+
     document.body.appendChild(heart);
 
     setTimeout(() => {
@@ -188,6 +353,9 @@ function criarCoracao() {
 }
 
 setInterval(criarCoracao, 300);
+
+
+/* QUIZ */
 
 const perguntas = [
     "Você me ama? ❤️",
@@ -201,23 +369,30 @@ const perguntas = [
 let perguntaAtual = 0;
 
 function proximaPergunta() {
+
     perguntaAtual++;
 
     if (perguntaAtual < perguntas.length) {
+
         document.getElementById("pergunta").innerHTML =
             perguntas[perguntaAtual];
     }
 
     if (perguntaAtual === perguntas.length - 1) {
-        document.querySelector("#quizNamoro button:nth-child(2)").innerHTML =
-            "Sim, eu aceito ❤️";
 
-        document.querySelector("#quizNamoro button:nth-child(3)").innerHTML =
-            "Claro que aceito 💍";
+        document.querySelector(
+            "#quizNamoro button:nth-child(2)"
+        ).innerHTML = "Sim, eu aceito ❤️";
+
+        document.querySelector(
+            "#quizNamoro button:nth-child(3)"
+        ).innerHTML = "Claro que aceito 💍";
     }
 
     if (perguntaAtual >= perguntas.length) {
-        const quiz = document.getElementById("quizNamoro");
+
+        const quiz =
+            document.getElementById("quizNamoro");
 
         quiz.classList.add("celebracao");
 
@@ -227,24 +402,46 @@ function proximaPergunta() {
             "<h2>❤️ Eu te amo infinitamente ❤️</h2>";
 
         for (let i = 0; i < 80; i++) {
+
             setTimeout(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerHTML = ['❤️','💖','💕','💗'][Math.floor(Math.random()*4)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = (20 + Math.random()*25) + 'px';
+
+                const heart =
+                    document.createElement("div");
+
+                heart.classList.add("heart");
+
+                heart.innerHTML =
+                    ["❤️", "💖", "💕", "💗"]
+                    [Math.floor(Math.random() * 4)];
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+                heart.style.fontSize =
+                    (20 + Math.random() * 25) + "px";
+
                 document.body.appendChild(heart);
 
-                setTimeout(() => heart.remove(), 6000);
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+
             }, i * 40);
         }
     }
 }
 
+
+/* MÚSICA */
+
 function tocarMusica() {
+
     document.getElementById("musica").play();
+
 }
+
 </script>
 
 </body>
 </html>
+```
