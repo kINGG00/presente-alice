@@ -1,761 +1,513 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title> Feito com mt carinho! </title>
+    <meta charset="UTF-8">
+    <title>Feito com mt carinho!</title>
 
-<style>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-* {
-    box-sizing: border-box;
-}
+        p,
+        h2,
+        h3,
+        h4,
+        span,
+        div {
+            color: #ff4da6;
+        }
 
-p, h2, h3, h4, span, div {
-    color: #ff4da6;
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #050505, #1a0010, #ff4da6);
+            color: #ffb6d9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #050505, #1a0010, #ff4da6);
-    color: #ffb6d9;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    overflow-x: hidden;
-}
+        .card {
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.55);
+            border-radius: 25px;
+            box-shadow: 0 0 30px #ff4da6;
+        }
 
-.card {
-    width: 90%;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.55);
-    border-radius: 25px;
-    box-shadow: 0 0 30px #ff4da6;
-}
+        h1 {
+            color: #ff4da6;
+            font-size: 42px;
+            margin: 0 0 25px;
+        }
 
-h1 {
-    color: #ff4da6;
-    font-size: 42px;
-    margin: 0 0 25px;
-}
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
 
-p {
-    font-size: 20px;
-    line-height: 1.6;
-}
+        .introducao {
+            text-align: left;
+            margin-bottom: 30px;
+        }
 
-.introducao {
-    text-align: left;
-    margin-bottom: 30px;
-}
+        .contador-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-.contador-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
+        .contador-section h2 {
+            margin: 12px 0;
+        }
 
-.contador-section h2 {
-    margin: 12px 0;
-}
+        #contador {
+            font-size: 26px;
+            color: #ff1493;
+            margin: 15px 0 25px;
+            text-align: center;
+        }
 
-#contador {
-    font-size: 26px;
-    color: #ff1493;
-    margin: 15px 0 25px;
-    text-align: center;
-}
+        .foto-casal {
+            display: block;
+            width: 250px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 10px auto 30px;
+            box-shadow: 0 0 15px #ff8ac8;
+        }
 
-.foto-casal {
-    display: block;
-    width: 250px;
-    height: 210px;
-    object-fit: cover;
-    border-radius: 20px;
-    margin: 10px auto 30px;
-    box-shadow: 0 0 15px #ff8ac8;
-}
+        /* CAIXA DE TEXTO PADRÃO */
+        .caixa-texto {
+            width: 100%;
+            max-width: 750px;
+            margin: 30px auto 0;
+            padding: 25px;
+            background: rgba(255, 77, 166, 0.08);
+            border: 2px solid #ff4da6;
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(255, 77, 166, 0.15);
+        }
 
-/* CAIXA DE TEXTO PADRÃO */
-.caixa-texto {
-    width: 100%;
-    max-width: 750px;
-    margin: 30px auto 0;
-    padding: 25px;
-    background: rgba(255, 77, 166, 0.08);
-    border: 2px solid #ff4da6;
-    border-radius: 20px;
-    text-align: left;
-    box-shadow: 0 0 20px rgba(255, 77, 166, 0.15);
-}
+        .caixa-texto h2 {
+            text-align: center;
+            margin: 0 0 20px;
+            color: #ff8ac8;
+            font-size: 24px;
+        }
 
-.caixa-texto h2 {
-    text-align: center;
-    margin: 0 0 20px;
-    color: #ff8ac8;
-    font-size: 24px;
-}
+        .caixa-texto p {
+            margin: 0;
+            text-align: left;
+            color: #ffb6d9;
+            font-size: 19px;
+            line-height: 1.8;
+        }
 
-.caixa-texto p {
-    margin: 0;
-    text-align: left;
-    color: #ffb6d9;
-    font-size: 19px;
-    line-height: 1.8;
-}
+        .caixa-texto .destaque {
+            color: #ff4da6;
+            font-weight: bold;
+        }
 
-.caixa-texto .destaque {
-    color: #ff4da6;
-    font-weight: bold;
-}
+        /* ESPAÇO PARA DIGITAR - SOFTR */
+        .espaco-digitar {
+            width: 100%;
+            max-width: 750px;
+            margin: 30px auto 0;
+            padding-top: 25px;
+            border-top: 2px solid #ff4da6;
+            text-align: left;
+        }
 
-/* ESPAÇO PARA DIGITAR */
-.espaco-digitar {
-    width: 100%;
-    max-width: 750px;
-    margin: 30px auto 0;
-    padding-top: 25px;
-    border-top: 2px solid #ff4da6;
-    text-align: left;
-}
+        .espaco-digitar h2 {
+            text-align: center;
+            margin: 0 0 15px;
+        }
 
-.espaco-digitar h2 {
-    text-align: center;
-    margin: 0 0 15px;
-}
+        .espaco-digitar iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.3);
+        }
 
-.espaco-digitar textarea {
-    width: 100%;
-    min-height: 150px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 2px solid #ff4da6;
-    border-radius: 15px;
-    color: #ffb6d9;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.3s;
-}
+        /* CORAÇÕES */
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: #ff69b4;
+            font-size: 24px;
+            animation: cair 6s linear infinite;
+            pointer-events: none;
+        }
 
-.espaco-digitar textarea:focus {
-    border-color: #ff8ac8;
-    box-shadow: 0 0 15px #ff4da6;
-}
+        @keyframes cair {
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
 
-.espaco-digitar textarea::placeholder {
-    color: #ff69b4;
-    opacity: 0.6;
-}
+        button {
+            background: #ff4da6;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
 
-.botoes-textarea {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 15px;
-    flex-wrap: wrap;
-}
+        button:hover {
+            transform: scale(1.05);
+        }
 
-.botoes-textarea button {
-    padding: 12px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
+        .quiz-caixa {
+            width: 100%;
+            max-width: 600px;
+            margin: 35px auto;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.75);
+            border: 2px solid #ff4da6;
+            border-radius: 25px;
+            box-shadow: 0 0 25px #ff4da6;
+            text-align: center;
+        }
 
-.botoes-textarea button:hover {
-    transform: scale(1.05);
-}
+        .quiz-caixa h2 {
+            font-size: 28px;
+            color: #ff8ac8;
+        }
 
-.btn-salvar {
-    background: #ff4da6;
-    color: white;
-}
+        .quiz-caixa button {
+            margin: 8px;
+        }
 
-.btn-limpar {
-    background: #666;
-    color: white;
-}
+        @keyframes celebrar {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
 
-/* MENSAGENS SALVAS */
-.mensagens-salvas {
-    width: 100%;
-    max-width: 750px;
-    margin: 25px auto 0;
-    text-align: left;
-}
+        .celebracao {
+            animation: celebrar 1s ease-in-out;
+        }
 
-.mensagens-salvas h3 {
-    text-align: center;
-    color: #ff8ac8;
-    font-size: 24px;
-    margin: 0 0 15px;
-}
+        /* CELULAR */
+        @media (max-width: 600px) {
+            .card {
+                width: 94%;
+                padding: 20px;
+                margin: 25px auto;
+            }
 
-.mensagem-item {
-    background: rgba(255, 77, 166, 0.10);
-    border-left: 4px solid #ff4da6;
-    padding: 15px 20px;
-    margin-bottom: 12px;
-    border-radius: 0 15px 15px 0;
-    position: relative;
-}
+            h1 {
+                font-size: 32px;
+            }
 
-.mensagem-item .data {
-    font-size: 14px;
-    color: #ff69b4;
-    opacity: 0.7;
-    margin-bottom: 5px;
-}
+            p {
+                font-size: 17px;
+            }
 
-.mensagem-item .conteudo {
-    font-size: 18px;
-    color: #ffb6d9;
-    margin: 0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
+            #contador {
+                font-size: 21px;
+            }
 
-.mensagem-item .btn-deletar {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    color: #ff4da6;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 10px;
-}
+            .foto-casal {
+                width: 230px;
+                height: 200px;
+            }
 
-.mensagem-item .btn-deletar:hover {
-    background: rgba(255, 77, 166, 0.2);
-}
+            .quiz-caixa {
+                padding: 20px 15px;
+            }
 
-.sem-mensagens {
-    text-align: center;
-    color: #ff69b4;
-    font-size: 18px;
-    opacity: 0.6;
-    padding: 20px 0;
-}
+            .espaco-digitar iframe {
+                height: 450px;
+            }
 
-/* CORAÇÕES */
-.heart {
-    position: fixed;
-    top: -10px;
-    color: #ff69b4;
-    font-size: 24px;
-    animation: cair 6s linear infinite;
-    pointer-events: none;
-}
+            .caixa-texto p {
+                font-size: 17px;
+            }
 
-@keyframes cair {
-    to {
-        transform: translateY(110vh);
-        opacity: 0;
-    }
-}
-
-button {
-    background: #ff4da6;
-    color: white;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 20px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-.quiz-caixa {
-    width: 100%;
-    max-width: 600px;
-    margin: 35px auto;
-    padding: 25px;
-    background: rgba(0, 0, 0, 0.75);
-    border: 2px solid #ff4da6;
-    border-radius: 25px;
-    box-shadow: 0 0 25px #ff4da6;
-    text-align: center;
-}
-
-.quiz-caixa h2 {
-    font-size: 28px;
-    color: #ff8ac8;
-}
-
-.quiz-caixa button {
-    margin: 8px;
-}
-
-@keyframes celebrar {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-}
-
-.celebracao {
-    animation: celebrar 1s ease-in-out;
-}
-
-/* CELULAR */
-@media (max-width: 600px) {
-
-    .card {
-        width: 94%;
-        padding: 20px;
-        margin: 25px auto;
-    }
-
-    h1 {
-        font-size: 32px;
-    }
-
-    p {
-        font-size: 17px;
-    }
-
-    #contador {
-        font-size: 21px;
-    }
-
-    .foto-casal {
-        width: 230px;
-        height: 200px;
-    }
-
-    .quiz-caixa {
-        padding: 20px 15px;
-    }
-
-    .espaco-digitar textarea {
-        min-height: 120px;
-        font-size: 16px;
-    }
-
-    .botoes-textarea {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .botoes-textarea button {
-        width: 100%;
-        max-width: 250px;
-    }
-
-    .mensagem-item .conteudo {
-        font-size: 16px;
-    }
-
-    .caixa-texto p {
-        font-size: 17px;
-    }
-
-    .caixa-texto {
-        padding: 18px;
-    }
-}
-
-</style>
+            .caixa-texto {
+                padding: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="card">
+    <div class="card">
 
-    <h1>Para a alice ❤️</h1>
+        <h1>Para a alice ❤️</h1>
 
-    <p class="introducao">
-        Minha princesa. Você mudou minha forma de pensar e ver o amor,
-        obrigado por isso. Você é perfeitamente esplêndida.
-    </p>
-
-    <!-- CONTADOR -->
-    <div class="contador-section">
-
-        <h2>Estamos juntinhos há:</h2>
-
-        <div id="contador"></div>
-
-        <h2>Nós juntinhos bem fofos ❤️ 📸</h2>
-
-        <img
-            src="foto1.jpg"
-            alt="Nossa foto"
-            class="foto-casal"
-        >
-
-    </div>
-
-    <!-- MENSAGEM PRINCIPAL -->
-    <div class="caixa-texto">
-
-        <h2>Mensagem para a minha princesa</h2>
-
-        <p>
-          Oii alice não sei se você vai ver isso. Mas espero que você fique bem! não consigo esperar por você. Sinto muito mas é complicado sem ter certeza que você iria resolver as coisas e conseguir voltar! antes eu estava
-          preparado para isso. Mas me apeguei muito a você para conseguir ficar esse tempo inteiro sem você, ainda correndo o risco de tudo não ser igual se voltasse. Enfim eu sinto muito. Eu te amo pkrl! a pessoa que eu mais amo
-          no mundo inteiro. Porém eu não posso passar por isso de novo, já me submeti a isso no passado, foi uma experiência traumática de fato! Espero que você seja feliz, que consiga melhorar as coisas na sua vida! Espero que não fique
-          com raiva de mim, entenda meu lado também, estou nada bem, assim como você também não deve estar... caso algum dia você precise, ou consiga resolver as coisas me procure, mas não me dê esperanças que não tenha certeza que vai 
-          cumprir... você me prometeu nunca terminar. E terminou, como eu vou conseguir confiar que você voltaria sabe? meu número é o mesmo e nunca vou te bloquear lá. Caso precise! então desculpa qualquer coisa mas é dificil aceitar isso, infelizmente. ❤ Não deixe de cuidar da aurora também!
+        <p class="introducao">
+            Minha princesa. Você mudou minha forma de pensar e ver o amor,
+            obrigado por isso. Você é perfeitamente esplêndida.
         </p>
 
-    </div>
+        <!-- CONTADOR -->
+        <div class="contador-section">
 
-    <!-- TEXTO ADICIONAL -->
-    <div class="caixa-texto">
+            <h2>Estamos juntinhos há:</h2>
 
-        <h2>❤️ Eu te amo... ❤️</h2>
+            <div id="contador"></div>
 
-        <p>
-            E se você está lendo isso agora, quero que saiba que cada palavra que escrevi aqui saiu do fundo do meu coração. 
-            Não importa o que aconteça, onde você esteja ou o que o futuro nos reserve, você sempre terá um lugar especial em mim. 
-            Eu espero que você fique bem com essa sua decisão e que as risadas sejam mais frequentes que as lágrimas, mesmo nos dias mais difíceis. 
-            Obrigado por existir e por ter feito parte da minha vida e história. ❤️ Queria que nunca tivesse um fim, mas isso nunca depende só de uma pessoa, infelizmente relacionamentos é complicado e depende de duas pessoas querer.
-            Apesar de tudo entendo sua decisão, mesmo sendo ruim, nem todo mundo tá preparado para viver a vida de adulto e conquistar a independencia sozin. Então fique bem de verdade e seja feliz. Eu te amo. Para sempre minha princesa
-            do meu coração!
-        </p>
+            <h2>Nós juntinhos bem fofos ❤️ 📸</h2>
 
-    </div>
+            <img src="foto1.jpg" alt="Nossa foto" class="foto-casal">
 
-    <!-- TEXTINHO PROMETIDO -->
-    <div class="caixa-texto">
-
-        <h2> O textinho que eu prometi nunca tirar daqui caso você precise ❤️</h2>
-
-        <p>
-            Alice... eu nunca imaginei que seria você a mulher da minha vida. A pessoa que eu amo muito. Não imaginava que você era essa pessoa tão incrível e fofa... pequenos detalhes que me fizeram criar sentimentos por você.
-            Seu jeitinho único de ser me encantou de verdade! sou muito grato por você ter sido curiosa, por ter me escolhido para acreditar no amor novamente, eu valorizo tudo que você fez e faz por mim, me esforço para te retribuir 
-            da melhor maneira, com muito carinho e amor te priorizando sempre. Cada pequeno momento nosso é incrível, relembrando as coisas do passado, conversando sobre qualquer coisa e sempre rindo e se divertindo... zoando as pessoas,
-            lembrando dos nossos momentos fofinhos juntos, como se conhecemos e se aproximamos, tudo tão simples mas se tornam tão especial quando é contigo... inexplicavel essa sensação, só tenho a te agradecer por tudo e todo esforço.
-            Saiba que independente do quão difícil as coisas podem ser e vão ser, eu sempre vou estar aqui, sempre irei fazer o possível e o impossivel para tudo dar certo. Por que eu te amo de verdade! não importa o quão dificil 
-            alguma coisa seja, eu apenas peço que você confie no processo e em mim, nada é impossível, ainda mais com duas pessoas fazendo e se esforçando isso se torna mais do que possivel, vira a realidade! o tempo pode ser duro as vezes
-            mas também é necessário, coisas que começam rápido, tendem a acabar rápido, dito isso nada melhor que algo bem estruturado respeitando o tempo de cada um, para que seja sem margem para erros. Independente de qualquer desentendimento
-            ou briga boba, eu sempre vou te amar e não vou desistir de você! por mais que me deixe chateado, eu não vou te deixar, você já é minha família! minha mulher que eu tanto amo! não tenha dúvidas do meu amor por você! sempre que se sentir
-            com medo, insegura ou assustada com nós, se lembre disso desse texto, inclusive ele vai ficar aqui para sempre! com o intuíto de te acalmar, tranquilizar, sempre que você se sentir assim, leia ele, varias vezes! e lembre que eu vou
-            sempre te escolher, escolher amar você, ficar com você. Não importa o tempo que demore, não tenho pressa para nada, <span class="destaque">O amor não tem pressa... ele sabe esperar, sabe permanecer e, quando é verdadeiro, encontra seu caminho mesmo nos dias difíceis.</span>
-            então minha princesa espero que você entenda o quanto especial você é para mim. <span class="destaque">EU TE AMO MUITO...</span> nunca duvide disso! tudo que eu disse é de coração para você tentar entender e se sentir mais tranquila com tudo. Sempre estarei ao seu lado
-            dando o meu melhor tá bom? Eu te amo independente de qualquer coisa! você é minha princesinha! ❤️
-        </p>
-
-    </div>
-
-    <!-- ESPAÇO PARA DIGITAR -->
-    <div class="espaco-digitar">
-
-        <h2>🌸 Caso você se sinta perdida... 🌸</h2>
-
-        <textarea id="mensagemDigitada" placeholder="Escreva aqui o que você está sentindo... pode ser um desabafo, uma dúvida, ou apenas o que vier à mente. Eu vou ler com todo o carinho do mundo. ❤️"></textarea>
-
-        <div class="botoes-textarea">
-            <button class="btn-salvar" onclick="salvarMensagem()">💾 Salvar mensagem</button>
-            <button class="btn-limpar" onclick="limparCampo()">🗑️ Limpar campo</button>
         </div>
 
+        <!-- MENSAGEM PRINCIPAL -->
+        <div class="caixa-texto">
+
+            <h2>Mensagem para a minha princesa</h2>
+
+            <p>
+                Oii alice não sei se você vai ver isso. Mas espero que você fique bem! não consigo esperar por você. Sinto muito mas é complicado sem ter certeza que você iria resolver as coisas e conseguir voltar! antes eu estava
+                preparado para isso. Mas me apeguei muito a você para conseguir ficar esse tempo inteiro sem você, ainda correndo o risco de tudo não ser igual se voltasse. Enfim eu sinto muito. Eu te amo pkrl! a pessoa que eu mais amo
+                no mundo inteiro. Porém eu não posso passar por isso de novo, já me submeti a isso no passado, foi uma experiência traumática de fato! Espero que você seja feliz, que consiga melhorar as coisas na sua vida! Espero que não fique
+                com raiva de mim, entenda meu lado também, estou nada bem, assim como você também não deve estar... caso algum dia você precise, ou consiga resolver as coisas me procure, mas não me dê esperanças que não tenha certeza que vai
+                cumprir... você me prometeu nunca terminar. E terminou, como eu vou conseguir confiar que você voltaria sabe? meu número é o mesmo e nunca vou te bloquear lá. Caso precise! então desculpa qualquer coisa mas é dificil aceitar isso, infelizmente. ❤ Não deixe de cuidar da aurora também!
+            </p>
+
+        </div>
+
+        <!-- TEXTO ADICIONAL -->
+        <div class="caixa-texto">
+
+            <h2>❤️ Eu te amo... ❤️</h2>
+
+            <p>
+                E se você está lendo isso agora, quero que saiba que cada palavra que escrevi aqui saiu do fundo do meu coração.
+                Não importa o que aconteça, onde você esteja ou o que o futuro nos reserve, você sempre terá um lugar especial em mim.
+                Eu espero que você fique bem com essa sua decisão e que as risadas sejam mais frequentes que as lágrimas, mesmo nos dias mais difíceis.
+                Obrigado por existir e por ter feito parte da minha vida e história. ❤️ Queria que nunca tivesse um fim, mas isso nunca depende só de uma pessoa, infelizmente relacionamentos é complicado e depende de duas pessoas querer.
+                Apesar de tudo entendo sua decisão, mesmo sendo ruim, nem todo mundo tá preparado para viver a vida de adulto e conquistar a independencia sozin. Então fique bem de verdade e seja feliz. Eu te amo. Para sempre minha princesa
+                do meu coração!
+            </p>
+
+        </div>
+
+        <!-- TEXTINHO PROMETIDO -->
+        <div class="caixa-texto">
+
+            <h2>O textinho que eu prometi nunca tirar daqui caso você precise ❤️</h2>
+
+            <p>
+                Alice... eu nunca imaginei que seria você a mulher da minha vida. A pessoa que eu amo muito. Não imaginava que você era essa pessoa tão incrível e fofa... pequenos detalhes que me fizeram criar sentimentos por você.
+                Seu jeitinho único de ser me encantou de verdade! sou muito grato por você ter sido curiosa, por ter me escolhido para acreditar no amor novamente, eu valorizo tudo que você fez e faz por mim, me esforço para te retribuir
+                da melhor maneira, com muito carinho e amor te priorizando sempre. Cada pequeno momento nosso é incrível, relembrando as coisas do passado, conversando sobre qualquer coisa e sempre rindo e se divertindo... zoando as pessoas,
+                lembrando dos nossos momentos fofinhos juntos, como se conhecemos e se aproximamos, tudo tão simples mas se tornam tão especial quando é contigo... inexplicavel essa sensação, só tenho a te agradecer por tudo e todo esforço.
+                Saiba que independente do quão difícil as coisas podem ser e vão ser, eu sempre vou estar aqui, sempre irei fazer o possível e o impossivel para tudo dar certo. Por que eu te amo de verdade! não importa o quão dificil
+                alguma coisa seja, eu apenas peço que você confie no processo e em mim, nada é impossível, ainda mais com duas pessoas fazendo e se esforçando isso se torna mais do que possivel, vira a realidade! o tempo pode ser duro as vezes
+                mas também é necessário, coisas que começam rápido, tendem a acabar rápido, dito isso nada melhor que algo bem estruturado respeitando o tempo de cada um, para que seja sem margem para erros. Independente de qualquer desentendimento
+                ou briga boba, eu sempre vou te amar e não vou desistir de você! por mais que me deixe chateado, eu não vou te deixar, você já é minha família! minha mulher que eu tanto amo! não tenha dúvidas do meu amor por você! sempre que se sentir
+                com medo, insegura ou assustada com nós, se lembre disso desse texto, inclusive ele vai ficar aqui para sempre! com o intuíto de te acalmar, tranquilizar, sempre que você se sentir assim, leia ele, varias vezes! e lembre que eu vou
+                sempre te escolher, escolher amar você, ficar com você. Não importa o tempo que demore, não tenho pressa para nada, <span class="destaque">O amor não tem pressa... ele sabe esperar, sabe permanecer e, quando é verdadeiro, encontra seu caminho mesmo nos dias difíceis.</span>
+                então minha princesa espero que você entenda o quanto especial você é para mim. <span class="destaque">EU TE AMO MUITO...</span> nunca duvide disso! tudo que eu disse é de coração para você tentar entender e se sentir mais tranquila com tudo. Sempre estarei ao seu lado
+                dando o meu melhor tá bom? Eu te amo independente de qualquer coisa! você é minha princesinha! ❤️
+            </p>
+
+        </div>
+
+        <!-- ESPAÇO PARA DIGITAR - FORMULÁRIO SOFTR -->
+        <div class="espaco-digitar">
+
+            <h2>🌸 Caso você se sinta perdida... 🌸</h2>
+
+            <iframe id="softr-form" src="https://walton99548.softr.app/embed/pages/bf708e2f-db7d-4162-a135-db68e155c43c/blocks/form" width="100%" height="500" scrolling="no" frameborder="0" style="border:none; border-radius: 15px; background: rgba(0,0,0,0.3);"></iframe>
+
+        </div>
+
+        <!-- QUIZ -->
+        <div id="quizNamoro" class="quiz-caixa">
+
+            <h2 id="pergunta">Você me ama? ❤️</h2>
+
+            <button onclick="proximaPergunta()">Sim ❤️</button>
+            <button onclick="proximaPergunta()">Claro que sim ❤️</button>
+
+        </div>
+
+        <br>
+
+        <!-- MÚSICA -->
+        <button onclick="tocarMusica()">
+            Nossa música! Saudades de você ❤️ 🎵
+        </button>
+
+        <audio id="musica" loop>
+            <source src="musica2.mp3" type="audio/mpeg">
+        </audio>
+
     </div>
 
-    <!-- MENSAGENS SALVAS (agora só aparece para quem escreveu) -->
-    <div class="mensagens-salvas" id="mensagensSalvas">
-        <h3>💕 Suas mensagens 💕</h3>
-        <div id="listaMensagens"></div>
-    </div>
+    <script>
+        // ===== CONTADOR =====
 
-    <!-- QUIZ -->
-    <div id="quizNamoro" class="quiz-caixa">
+        const dataInicio = new Date("2026-04-12T00:00:00");
 
-        <h2 id="pergunta">Você me ama? ❤️</h2>
+        function atualizarContador() {
 
-        <button onclick="proximaPergunta()">Sim ❤️</button>
-        <button onclick="proximaPergunta()">Claro que sim ❤️</button>
+            const agora = new Date();
+            const diferenca = agora - dataInicio;
 
-    </div>
+            const dias = Math.floor(
+                diferenca / (1000 * 60 * 60 * 24)
+            );
 
-    <br>
+            const horas = Math.floor(
+                (diferenca / (1000 * 60 * 60)) % 24
+            );
 
-    <!-- MÚSICA -->
-    <button onclick="tocarMusica()">
-        Nossa música! Saudades de você ❤️ 🎵
-    </button>
+            const minutos = Math.floor(
+                (diferenca / (1000 * 60)) % 60
+            );
 
-    <audio id="musica" loop>
-        <source src="musica2.mp3" type="audio/mpeg">
-    </audio>
+            const segundos = Math.floor(
+                (diferenca / 1000) % 60
+            );
 
-</div>
-
-<script>
-
-// ===== DADOS SALVOS NO LOCALSTORAGE (apenas para a pessoa ver as próprias mensagens) =====
-
-function carregarMensagens() {
-    const mensagens = JSON.parse(localStorage.getItem('mensagensAlice') || '[]');
-    return mensagens;
-}
-
-function salvarMensagemNoStorage(mensagem) {
-    const mensagens = carregarMensagens();
-    mensagens.push({
-        texto: mensagem,
-        data: new Date().toLocaleString('pt-BR', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        })
-    });
-    localStorage.setItem('mensagensAlice', JSON.stringify(mensagens));
-    renderizarMensagens();
-}
-
-function deletarMensagem(index) {
-    const mensagens = carregarMensagens();
-    mensagens.splice(index, 1);
-    localStorage.setItem('mensagensAlice', JSON.stringify(mensagens));
-    renderizarMensagens();
-}
-
-function renderizarMensagens() {
-    const mensagens = carregarMensagens();
-    const container = document.getElementById('listaMensagens');
-
-    if (mensagens.length === 0) {
-        container.innerHTML = `
-            <div class="sem-mensagens">
-                💕 Nenhuma mensagem ainda... escreva algo especial! 💕
-            </div>
-        `;
-        return;
-    }
-
-    let html = '';
-    for (let i = 0; i < mensagens.length; i++) {
-        const msg = mensagens[i];
-        html += `
-            <div class="mensagem-item">
-                <div class="data">📅 ${msg.data}</div>
-                <p class="conteudo">${msg.texto.replace(/\n/g, '<br>')}</p>
-                <button class="btn-deletar" onclick="deletarMensagem(${i})" title="Deletar mensagem">✕</button>
-            </div>
-        `;
-    }
-    container.innerHTML = html;
-}
-
-// ===== FUNÇÃO PRINCIPAL - SALVAR E ENVIAR PARA SEU E-MAIL =====
-
-function salvarMensagem() {
-    const texto = document.getElementById('mensagemDigitada').value;
-
-    if (texto.trim() === '') {
-        alert('💕 Escreva algo antes de salvar, por favor! 💕');
-        return;
-    }
-
-    // 1. Salva no localStorage para a pessoa ver as próprias mensagens
-    salvarMensagemNoStorage(texto);
-
-    // 2. Envia para seu e-mail via Formspree (ela NÃO SABE que está enviando)
-    // ⚠️ TROQUE 'SEU_FORM_ID_AQUI' pelo ID que você pegou no Formspree! ⚠️
-    fetch('https://formspree.io/f/xoeqwppy', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            mensagem: texto,
-            data: new Date().toLocaleString('pt-BR', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            // Mensagem que aparece para ela (ela não sabe que foi para seu e-mail)
-            alert('💖 Mensagem salva com sucesso! Vou ler com todo carinho! 💖');
-            document.getElementById('mensagemDigitada').value = '';
-        } else {
-            alert('❌ Erro ao salvar. Tente novamente.');
+            document.getElementById("contador").innerHTML =
+                dias + " dias, " +
+                horas + " horas, " +
+                minutos + " minutos e " +
+                segundos + " segundos";
         }
-    })
-    .catch(error => {
-        alert('❌ Erro de conexão. Tente novamente.');
-        console.error('Erro:', error);
-    });
-}
 
-function limparCampo() {
-    document.getElementById('mensagemDigitada').value = '';
-}
-
-// ===== CONTADOR =====
-
-const dataInicio = new Date("2026-04-12T00:00:00");
-
-function atualizarContador() {
-
-    const agora = new Date();
-    const diferenca = agora - dataInicio;
-
-    const dias = Math.floor(
-        diferenca / (1000 * 60 * 60 * 24)
-    );
-
-    const horas = Math.floor(
-        (diferenca / (1000 * 60 * 60)) % 24
-    );
-
-    const minutos = Math.floor(
-        (diferenca / (1000 * 60)) % 60
-    );
-
-    const segundos = Math.floor(
-        (diferenca / 1000) % 60
-    );
-
-    document.getElementById("contador").innerHTML =
-        dias + " dias, " +
-        horas + " horas, " +
-        minutos + " minutos e " +
-        segundos + " segundos";
-}
-
-setInterval(atualizarContador, 1000);
-atualizarContador();
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
 
 
-// ===== CORAÇÕES CAINDO =====
+        // ===== CORAÇÕES CAINDO =====
 
-function criarCoracao() {
+        function criarCoracao() {
 
-    const heart = document.createElement("div");
+            const heart = document.createElement("div");
 
-    heart.classList.add("heart");
+            heart.classList.add("heart");
 
-    heart.innerHTML = "❤️";
+            heart.innerHTML = "❤️";
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
+            heart.style.left =
+                Math.random() * 100 + "vw";
 
-    heart.style.animationDuration =
-        (Math.random() * 3 + 3) + "s";
+            heart.style.animationDuration =
+                (Math.random() * 3 + 3) + "s";
 
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}
-
-setInterval(criarCoracao, 300);
-
-
-// ===== QUIZ =====
-
-const perguntas = [
-    "Você me ama? ❤️",
-    "Você gosta de passar tempo comigo? 🥰",
-    "Eu faço você feliz? 💕",
-    "Você quer continuar criando memórias comigo? ✨",
-    "Então só falta uma última pergunta... 💌",
-    "Alice, você aceita namorar comigo? ❤️💍"
-];
-
-let perguntaAtual = 0;
-
-function proximaPergunta() {
-
-    perguntaAtual++;
-
-    if (perguntaAtual < perguntas.length) {
-
-        document.getElementById("pergunta").innerHTML =
-            perguntas[perguntaAtual];
-    }
-
-    if (perguntaAtual === perguntas.length - 1) {
-
-        document.querySelector(
-            "#quizNamoro button:nth-child(2)"
-        ).innerHTML = "Sim, eu aceito ❤️";
-
-        document.querySelector(
-            "#quizNamoro button:nth-child(3)"
-        ).innerHTML = "Claro que aceito 💍";
-    }
-
-    if (perguntaAtual >= perguntas.length) {
-
-        const quiz =
-            document.getElementById("quizNamoro");
-
-        quiz.classList.add("celebracao");
-
-        quiz.innerHTML =
-            "<h1>❤️ Alice, você oficialmente é minha namorada ❤️</h1>" +
-            "<p>Você acabou de me fazer a pessoa mais feliz do mundo.</p>" +
-            "<h2>❤️ Eu te amo infinitamente ❤️</h2>";
-
-        for (let i = 0; i < 80; i++) {
+            document.body.appendChild(heart);
 
             setTimeout(() => {
-
-                const heart =
-                    document.createElement("div");
-
-                heart.classList.add("heart");
-
-                heart.innerHTML =
-                    ["❤️", "💖", "💕", "💗"]
-                    [Math.floor(Math.random() * 4)];
-
-                heart.style.left =
-                    Math.random() * 100 + "vw";
-
-                heart.style.fontSize =
-                    (20 + Math.random() * 25) + "px";
-
-                document.body.appendChild(heart);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 6000);
-
-            }, i * 40);
+                heart.remove();
+            }, 6000);
         }
-    }
-}
+
+        setInterval(criarCoracao, 300);
 
 
-// ===== MÚSICA =====
+        // ===== QUIZ =====
 
-function tocarMusica() {
+        const perguntas = [
+            "Você me ama? ❤️",
+            "Você gosta de passar tempo comigo? 🥰",
+            "Eu faço você feliz? 💕",
+            "Você quer continuar criando memórias comigo? ✨",
+            "Então só falta uma última pergunta... 💌",
+            "Alice, você aceita namorar comigo? ❤️💍"
+        ];
 
-    document.getElementById("musica").play();
+        let perguntaAtual = 0;
 
-}
+        function proximaPergunta() {
+
+            perguntaAtual++;
+
+            if (perguntaAtual < perguntas.length) {
+
+                document.getElementById("pergunta").innerHTML =
+                    perguntas[perguntaAtual];
+            }
+
+            if (perguntaAtual === perguntas.length - 1) {
+
+                document.querySelector(
+                    "#quizNamoro button:nth-child(2)"
+                ).innerHTML = "Sim, eu aceito ❤️";
+
+                document.querySelector(
+                    "#quizNamoro button:nth-child(3)"
+                ).innerHTML = "Claro que aceito 💍";
+            }
+
+            if (perguntaAtual >= perguntas.length) {
+
+                const quiz =
+                    document.getElementById("quizNamoro");
+
+                quiz.classList.add("celebracao");
+
+                quiz.innerHTML =
+                    "<h1>❤️ Alice, você oficialmente é minha namorada ❤️</h1>" +
+                    "<p>Você acabou de me fazer a pessoa mais feliz do mundo.</p>" +
+                    "<h2>❤️ Eu te amo infinitamente ❤️</h2>";
+
+                for (let i = 0; i < 80; i++) {
+
+                    setTimeout(() => {
+
+                        const heart =
+                            document.createElement("div");
+
+                        heart.classList.add("heart");
+
+                        heart.innerHTML =
+                            ["❤️", "💖", "💕", "💗"]
+                            [Math.floor(Math.random() * 4)];
+
+                        heart.style.left =
+                            Math.random() * 100 + "vw";
+
+                        heart.style.fontSize =
+                            (20 + Math.random() * 25) + "px";
+
+                        document.body.appendChild(heart);
+
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 6000);
+
+                    }, i * 40);
+                }
+            }
+        }
 
 
-// ===== INICIALIZAR =====
+        // ===== MÚSICA =====
 
-renderizarMensagens();
+        function tocarMusica() {
 
-</script>
+            document.getElementById("musica").play();
+
+        }
+    </script>
 
 </body>
 </html>
