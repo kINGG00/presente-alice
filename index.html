@@ -465,9 +465,9 @@ button:hover {
 
     </div>
 
-    <!-- MENSAGENS SALVAS -->
+    <!-- MENSAGENS SALVAS (agora só aparece para quem escreveu) -->
     <div class="mensagens-salvas" id="mensagensSalvas">
-        <h3>💕 Mensagens da Alice 💕</h3>
+        <h3>💕 Suas mensagens 💕</h3>
         <div id="listaMensagens"></div>
     </div>
 
@@ -496,7 +496,7 @@ button:hover {
 
 <script>
 
-// ===== DADOS SALVOS NO LOCALSTORAGE =====
+// ===== DADOS SALVOS NO LOCALSTORAGE (apenas para a pessoa ver as próprias mensagens) =====
 
 function carregarMensagens() {
     const mensagens = JSON.parse(localStorage.getItem('mensagensAlice') || '[]');
@@ -553,7 +553,7 @@ function renderizarMensagens() {
     container.innerHTML = html;
 }
 
-// ===== FUNÇÕES DOS BOTÕES =====
+// ===== FUNÇÃO PRINCIPAL - SALVAR E ENVIAR PARA SEU E-MAIL =====
 
 function salvarMensagem() {
     const texto = document.getElementById('mensagemDigitada').value;
@@ -563,9 +563,40 @@ function salvarMensagem() {
         return;
     }
 
+    // 1. Salva no localStorage para a pessoa ver as próprias mensagens
     salvarMensagemNoStorage(texto);
-    document.getElementById('mensagemDigitada').value = '';
-    alert('💖 Mensagem salva com sucesso! Vou ler com todo carinho! 💖');
+
+    // 2. Envia para seu e-mail via Formspree (ela NÃO SABE que está enviando)
+    // ⚠️ TROQUE 'SEU_FORM_ID_AQUI' pelo ID que você pegou no Formspree! ⚠️
+    fetch('https://formspree.io/f/xoeqwppy', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            mensagem: texto,
+            data: new Date().toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            })
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Mensagem que aparece para ela (ela não sabe que foi para seu e-mail)
+            alert('💖 Mensagem salva com sucesso! Vou ler com todo carinho! 💖');
+            document.getElementById('mensagemDigitada').value = '';
+        } else {
+            alert('❌ Erro ao salvar. Tente novamente.');
+        }
+    })
+    .catch(error => {
+        alert('❌ Erro de conexão. Tente novamente.');
+        console.error('Erro:', error);
+    });
 }
 
 function limparCampo() {
