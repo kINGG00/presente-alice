@@ -73,14 +73,25 @@
             text-align: center;
         }
 
+        /* NOVO: CONTAINER PARA AS DUAS FOTOS */
+        .galeria-fotos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 10px auto 30px;
+            flex-wrap: wrap; /* Permite que quebre linha no celular */
+        }
+
+        /* ESTILO DAS FOTOS (MANTIDO O ANTIGO) */
         .foto-casal {
             display: block;
             width: 250px;
             height: 210px;
             object-fit: cover;
             border-radius: 20px;
-            margin: 10px auto 30px;
             box-shadow: 0 0 15px #ff8ac8;
+            margin: 0; /* Removido margin auto para funcionar no flex */
         }
 
         /* CAIXA DE TEXTO PADRÃO */
@@ -227,6 +238,12 @@
                 font-size: 21px;
             }
 
+            /* NOVO: Ajuste para o celular */
+            .galeria-fotos {
+                flex-direction: column; /* Fotos uma embaixo da outra */
+                gap: 15px;
+            }
+
             .foto-casal {
                 width: 230px;
                 height: 200px;
@@ -271,7 +288,11 @@
 
             <h2>Nós juntinhos bem fofos ❤️ 📸</h2>
 
-            <img src="foto1.jpg" alt="Nossa foto" class="foto-casal">
+            <!-- NOVO: GALERIA COM AS DUAS FOTOS -->
+            <div class="galeria-fotos">
+                <img src="foto1.jpg" alt="Nossa foto 1" class="foto-casal">
+                <img src="foto2.png" alt="Nossa foto 2" class="foto-casal">
+            </div>
 
         </div>
 
