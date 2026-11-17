@@ -153,9 +153,9 @@
                 <p> Ainda é preciso dedicar uma música para o amor da minha vida! por que você merece, nunca canso de demonstrar meu amor por você! </p>
             </div>
 
-            <!-- PLAYER DE MÚSICA MOVIDO PARA CÁ -->
+            <!-- PLAYER DE MÚSICA COM LETRA (Dandelions) -->
             <div class="player-letra">
-                <h2>Música para a minha princesa ❤️🎵</h2>
+                <h2> Música para a minha princesa! 🎵</h2>
                 <audio id="audio-player" controls>
                     <source src="musica3.mp3" type="audio/mpeg">
                     Seu navegador não suporta áudio.
@@ -193,6 +193,15 @@
 
         <br>
 
+        <!-- BOTÃO DA MÚSICA ANTIGA (musica.mp3) RESTAURADO AQUI EMBAIXO -->
+        <button onclick="tocarMusica()">
+            Nossa música! Saudades de você ❤️ 🎵
+        </button>
+
+        <audio id="musica" loop>
+            <source src="musica.mp3" type="audio/mpeg">
+        </audio>
+
     </div>
 
     <script>
@@ -222,7 +231,12 @@
         }
         setInterval(criarCoracao, 300);
 
-        // ===== PLAYER DE LETRA SINCRONIZADA =====
+        // ===== FUNÇÃO DA MÚSICA ANTIGA =====
+        function tocarMusica() {
+            document.getElementById("musica").play();
+        }
+
+        // ===== PLAYER DE LETRA SINCRONIZADA (Dandelions) =====
         const letraSincronizada = [
             { tempo: 0, texto: "🎵 (Começo da música) 🎵", traducao: "" },
             { tempo: 12.2, texto: "Maybe, it's the way you say my name", traducao: "Talvez seja o jeito que você diz o meu nome" },
