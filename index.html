@@ -2,365 +2,231 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Feito com mt carinho!</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⏳ Tempo juntos • Espaço para você</title>
     <style>
-        * { box-sizing: border-box; }
-        p, h2, h3, h4, span, div { color: #ff4da6; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            margin: 0; min-height: 100vh;
-            background: linear-gradient(135deg, #050505, #1a0010, #ff4da6);
-            color: #ffb6d9; font-family: Arial, sans-serif;
-            text-align: center; overflow-x: hidden;
-        }
-        .card {
-            width: 90%; max-width: 800px; margin: 50px auto;
-            padding: 30px; background: rgba(0, 0, 0, 0.55);
-            border-radius: 25px; box-shadow: 0 0 30px #ff4da6;
-        }
-        h1 { color: #ff4da6; font-size: 42px; margin: 0 0 25px; }
-        p { font-size: 20px; line-height: 1.6; }
-        .introducao { text-align: left; margin-bottom: 30px; }
-        .contador-section {
-            width: 100%; display: flex; flex-direction: column;
-            align-items: center; text-align: center;
-        }
-        .contador-section h2 { margin: 12px 0; }
-        #contador { font-size: 26px; color: #ff1493; margin: 15px 0 25px; text-align: center; }
-        
-        .galeria-fotos {
-            display: flex; justify-content: center; align-items: center;
-            gap: 15px; margin: 10px auto 30px; flex-wrap: wrap;
-        }
-        .foto-casal {
-            display: block; width: 250px; height: 210px;
-            object-fit: cover; border-radius: 20px;
-            box-shadow: 0 0 15px #ff8ac8; margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1f0020, #ff4da6);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #ffb6d9;
         }
 
-        .caixa-texto {
-            width: 100%; max-width: 750px; margin: 30px auto 0;
-            padding: 25px; background: rgba(255, 77, 166, 0.08);
-            border: 2px solid #ff4da6; border-radius: 20px;
-            text-align: left; box-shadow: 0 0 20px rgba(255, 77, 166, 0.15);
-        }
-        .caixa-texto h2 { text-align: center; margin: 0 0 20px; color: #ff8ac8; font-size: 24px; }
-        .caixa-texto p { margin: 0; text-align: left; color: #ffb6d9; font-size: 19px; line-height: 1.8; }
-        .caixa-texto .destaque { color: #ff4da6; font-weight: bold; }
-
-        .espaco-digitar {
-            width: 100%; max-width: 750px; margin: 30px auto 0;
-            padding-top: 25px; border-top: 2px solid #ff4da6; text-align: left;
-        }
-        .espaco-digitar h2 { text-align: center; margin: 0 0 15px; }
-        .espaco-digitar iframe {
-            width: 100%; height: 500px; border: none;
-            border-radius: 15px; background: transparent !important;
+        .container {
+            width: 100%;
+            max-width: 820px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 40px 30px;
+            box-shadow: 0 0 40px rgba(255, 77, 166, 0.6), 0 0 15px rgba(255, 77, 166, 0.3);
+            border: 1px solid rgba(255, 77, 166, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            transition: all 0.3s ease;
         }
 
-        .heart {
-            position: fixed; top: -10px; color: #ff69b4;
-            font-size: 24px; animation: cair 6s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes cair { to { transform: translateY(110vh); opacity: 0; } }
-
-        button {
-            background: #ff4da6; color: white; border: none;
-            padding: 15px 25px; border-radius: 20px;
-            font-size: 18px; cursor: pointer;
-        }
-        button:hover { transform: scale(1.05); }
-
-        .quiz-caixa {
-            width: 100%; max-width: 600px; margin: 35px auto;
-            padding: 25px; background: rgba(0, 0, 0, 0.75);
-            border: 2px solid #ff4da6; border-radius: 25px;
-            box-shadow: 0 0 25px #ff4da6; text-align: center;
-        }
-        .quiz-caixa h2 { font-size: 28px; color: #ff8ac8; }
-        .quiz-caixa button { margin: 8px; }
-
-        @keyframes celebrar {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
-        }
-        .celebracao { animation: celebrar 1s ease-in-out; }
-
-        /* ===== PLAYER DE LETRA ===== */
-        .player-letra {
-            width: 100%; max-width: 750px; margin: 30px auto;
-            padding: 25px; background: rgba(0, 0, 0, 0.6);
-            border: 2px solid #ff4da6; border-radius: 20px;
-            box-shadow: 0 0 20px rgba(255, 77, 166, 0.2);
-        }
-        .player-letra audio { width: 100%; margin-bottom: 20px; outline: none; }
-        .letra-container {
-            height: 250px; overflow-y: auto; padding: 10px;
-            background: rgba(255, 255, 255, 0.03); border-radius: 15px;
-            display: flex; flex-direction: column; gap: 15px;
-            scroll-behavior: smooth;
-        }
-        .letra-linha {
-            opacity: 0.4; transition: all 0.3s ease;
-            font-size: 18px; line-height: 1.4; padding: 5px;
-        }
-        .letra-linha.ativa {
-            opacity: 1; color: #ff8ac8; font-size: 22px;
-            font-weight: bold; transform: scale(1.02);
-            text-shadow: 0 0 10px rgba(255, 77, 166, 0.5);
-        }
-        .letra-traducao {
-            display: block; font-size: 14px; font-style: italic;
-            color: #ffb6d9; margin-top: 4px; font-weight: normal;
+        /* CONTADOR — destaque total */
+        .contador-wrapper {
+            text-align: center;
+            background: rgba(255, 77, 166, 0.08);
+            border-radius: 30px;
+            padding: 25px 20px;
+            border: 2px solid #ff4da6;
+            box-shadow: 0 0 25px #ff4da6;
+            transition: box-shadow 0.3s;
         }
 
-        @media (max-width: 850px) {
-            /* Ajuste para telas médias (tablets) para as 3 fotos não quebrarem estranho */
-            .foto-casal { width: 220px; height: 190px; }
+        .contador-wrapper h2 {
+            color: #ffb6d9;
+            font-weight: 400;
+            letter-spacing: 2px;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(255, 77, 166, 0.7);
+        }
+
+        #contador {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #ff8ac8;
+            text-shadow: 0 0 12px #ff1493, 0 0 25px #ff4da6;
+            line-height: 1.4;
+            word-break: break-word;
+            padding: 5px 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        #contador span {
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        /* ÁREA DE DIGITAÇÃO — espaço limpo, sem texto extra */
+        .area-digitar {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            padding: 10px;
+            border: 2px dashed #ff4da6;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        .area-digitar:focus-within {
+            border: 2px solid #ff8ac8;
+            box-shadow: 0 0 25px #ff4da6;
+        }
+
+        .area-digitar textarea {
+            width: 100%;
+            min-height: 280px;
+            background: transparent;
+            border: none;
+            outline: none;
+            resize: vertical;
+            color: #ffd9e8;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            padding: 20px 22px;
+            font-family: inherit;
+            border-radius: 25px;
+            letter-spacing: 0.3px;
+        }
+
+        .area-digitar textarea::placeholder {
+            color: #ff8ac880;
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.7;
+        }
+
+        /* pequeno rodapé decorativo (sem texto, só coração) */
+        .rodape {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            color: #ff4da6;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-top: 5px;
         }
 
         @media (max-width: 600px) {
-            .card { width: 94%; padding: 20px; margin: 25px auto; }
-            h1 { font-size: 32px; }
-            p { font-size: 17px; }
-            #contador { font-size: 21px; }
-            .galeria-fotos { flex-direction: column; gap: 15px; }
-            .foto-casal { width: 230px; height: 200px; }
-            .quiz-caixa { padding: 20px 15px; }
-            .espaco-digitar iframe { height: 450px; }
-            .caixa-texto p { font-size: 17px; }
-            .caixa-texto { padding: 18px; }
-            .letra-linha.ativa { font-size: 19px; }
+            .container {
+                padding: 25px 15px;
+                border-radius: 30px;
+                gap: 20px;
+            }
+
+            #contador {
+                font-size: 1.7rem;
+            }
+
+            .contador-wrapper h2 {
+                font-size: 1rem;
+            }
+
+            .area-digitar textarea {
+                min-height: 220px;
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            #contador {
+                font-size: 1.3rem;
+            }
+            .contador-wrapper h2 {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
-
 <body>
 
-    <div class="card">
+    <div class="container">
 
-        <h1>Para a alice ❤️</h1>
-        <p class="introducao">Minha princesa. Você mudou minha forma de pensar e ver o amor, obrigado por isso. Você é perfeitamente esplêndida.</p>
-
-        <div class="contador-section">
-            <h2>Estamos juntinhos há:</h2>
-            <div id="contador"></div>
-            <h2>Nós juntinhos bem fofos ❤️ 📸</h2>
-            <div class="galeria-fotos">
-                <img src="foto1.jpg" alt="Nossa foto 1" class="foto-casal">
-                <img src="foto2.png" alt="Nossa foto 2" class="foto-casal">
-                <img src="image3.png" alt="Nossa foto 3" class="foto-casal">
-            </div>
-            
-            <div class="caixa-texto">
-                <h2>E não acabou ❤️ </h2>
-                <p> Ainda é preciso dedicar uma música para o amor da minha vida! por que você merece, nunca canso de demonstrar meu amor por você! </p>
-            </div>
-
-            <!-- PLAYER DE MÚSICA COM LETRA (Dandelions) -->
-            <div class="player-letra">
-                <h2> Música para a minha princesa! 🎵</h2>
-                <audio id="audio-player" controls>
-                    <source src="musica3.mp3" type="audio/mpeg">
-                    Seu navegador não suporta áudio.
-                </audio>
-                <div class="letra-container" id="letra-container"></div>
-            </div>
-            
-        </div> <!-- Fecha a contador-section -->
-
-        <div class="caixa-texto">
-            <h2>Mensagem para a minha princesa</h2>
-            <p>Oie minha princesa, mais um mês com você... 4 meses ao total, meses esses que estou conhecendo mais sobre a pessoa com quem eu vou passar a minha vida ao lado, sinceramente eu não tenho dúvidas do meu amor por você, 4 meses de muitos sentimentos foi como uma montanha russa de sentimentos, uma experiência nova para nós dois... desafios para testar nossa confiança, fé e o amor um pelo outro. Apesar de tudo ainda estamos aqui, juntos e se amando como se fosse a primeira vez, pra mim isso é muito importante, por que eu sei que nada é fácil nessa vida. Mas ter uma pessoa que te ama ao lado facilita um pouco as coisas. Independente da distância que é algo passageiro, o nosso amor é real, o esforço, companhia e o respeito são verdadeiros. Temos um caminho difícil pela frente como qualquer casal e o importante é colocarmos nossa cabeça no objetivo e se apoiar um no outro. Saiba que sempre vou estar aqui para você e por você! Nunca se esqueça do quanto incrível você é, o seu jeitinho é especial, diferente e único. Sou feliz em ter você comigo, obrigado meu amor! Eu te amo com todo o meu coração. Minha princesinha linda! Obrigado por ter sido curiosa e ter se aproximado de mim.</p>
+        <!-- TEMPORIZADOR (único texto mantido) -->
+        <div class="contador-wrapper">
+            <h2>⏳ Estamos juntinhos há</h2>
+            <div id="contador">carregando...</div>
         </div>
 
-        <div class="caixa-texto">
-            <h2>❤️ Eu te amo... ❤️</h2>
-            <p>E se você está lendo isso agora, quero que saiba que cada palavra que escrevi aqui saiu do fundo do meu coração. Não importa o que aconteça, onde você esteja ou o que o futuro nos reserve, você sempre terá um lugar especial em mim. Eu espero que você fique bem com essa sua decisão e que as risadas sejam mais frequentes que as lágrimas, mesmo nos dias mais difíceis. Obrigado por existir e por ter feito parte da minha vida e história. ❤️ Queria que nunca tivesse um fim, mas isso nunca depende só de uma pessoa, infelizmente relacionamentos é complicado e depende de duas pessoas querer. Apesar de tudo entendo sua decisão, mesmo sendo ruim, nem todo mundo tá preparado para viver a vida de adulto e conquistar a independencia sozin. Então fique bem de verdade e seja feliz. Eu te amo. Para sempre minha princesa do meu coração!</p>
+        <!-- ESPAÇO PARA DIGITAR (sem texto inicial) -->
+        <div class="area-digitar">
+            <textarea id="meuTexto" placeholder="Digite aqui... (este espaço é seu)" spellcheck="false"></textarea>
         </div>
 
-        <div class="caixa-texto">
-            <h2>O textinho que eu prometi nunca tirar daqui caso você precise ❤️</h2>
-            <p>Alice... eu nunca imaginei que seria você a mulher da minha vida. A pessoa que eu amo muito. Não imaginava que você era essa pessoa tão incrível e fofa... pequenos detalhes que me fizeram criar sentimentos por você. Seu jeitinho único de ser me encantou de verdade! sou muito grato por você ter sido curiosa, por ter me escolhido para acreditar no amor novamente, eu valorizo tudo que você fez e faz por mim, me esforço para te retribuir da melhor maneira, com muito carinho e amor te priorizando sempre. Cada pequeno momento nosso é incrível, relembrando as coisas do passado, conversando sobre qualquer coisa e sempre rindo e se divertindo... zoando as pessoas, lembrando dos nossos momentos fofinhos juntos, como se conhecemos e se aproximamos, tudo tão simples mas se tornam tão especial quando é contigo... inexplicavel essa sensação, só tenho a te agradecer por tudo e todo esforço. Saiba que independente do quão difícil as coisas podem ser e vão ser, eu sempre vou estar aqui, sempre irei fazer o possível e o impossivel para tudo dar certo. Por que eu te amo de verdade! não importa o quão dificil alguma coisa seja, eu apenas peço que você confie no processo e em mim, nada é impossível, ainda mais com duas pessoas fazendo e se esforçando isso se torna mais do que possivel, vira a realidade! o tempo pode ser duro as vezes mas também é necessário, coisas que começam rápido, tendem a acabar rápido, dito isso nada melhor que algo bem estruturado respeitando o tempo de cada um, para que seja sem margem para erros. Independente de qualquer desentendimento ou briga boba, eu sempre vou te amar e não vou desistir de você! por mais que me deixe chateado, eu não vou te deixar, você já é minha família! minha mulher que eu tanto amo! não tenha dúvidas do meu amor por você! sempre que se sentir com medo, insegura ou assustada com nós, se lembre disso desse texto, inclusive ele vai ficar aqui para sempre! com o intuíto de te acalmar, tranquilizar, sempre que você se sentir assim, leia ele, varias vezes! e lembre que eu vou sempre te escolher, escolher amar você, ficar com você. Não importa o tempo que demore, não tenho pressa para nada, <span class="destaque">O amor não tem pressa... ele sabe esperar, sabe permanecer e, quando é verdadeiro, encontra seu caminho mesmo nos dias difíceis.</span> então minha princesa espero que você entenda o quanto especial você é para mim. <span class="destaque">EU TE AMO MUITO...</span> nunca duvide disso! tudo que eu disse é de coração para você tentar entender e se sentir mais tranquila com tudo. Sempre estarei ao seu lado dando o meu melhor tá bom? Eu te amo independente de qualquer coisa! você é minha princesinha! ❤️</p>
-        </div>
-
-        <div class="espaco-digitar">
-            <h2>🌸 Caso você se sinta perdida... 🌸</h2>
-            <iframe id="softr-form" src="https://walton99548.softr.app/embed/pages/bf708e2f-db7d-4162-a135-db68e155c43c/blocks/form" width="100%" height="500" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; border-radius: 15px; background: transparent !important;"></iframe>
-        </div>
-
-        <div id="quizNamoro" class="quiz-caixa">
-            <h2 id="pergunta">Você me ama? ❤️</h2>
-            <button onclick="proximaPergunta()">Sim ❤️</button>
-            <button onclick="proximaPergunta()">Claro que sim ❤️</button>
-        </div>
-
-        <br>
-
-        <!-- BOTÃO DA MÚSICA ANTIGA (musica.mp3) -->
-        <button onclick="tocarMusica()">
-            Nossa música! Saudades de você ❤️ 🎵
-        </button>
-
-        <audio id="musica" loop>
-            <source src="musica.mp3" type="audio/mpeg">
-        </audio>
-
+        <!-- apenas um detalhe visual, sem texto significativo -->
+        <div class="rodape">❤️</div>
     </div>
 
     <script>
-        // ===== CONTADOR =====
-        const dataInicio = new Date("2026-04-12T00:00:00");
-        function atualizarContador() {
-            const agora = new Date();
-            const diferenca = agora - dataInicio;
-            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
-            const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
-            const segundos = Math.floor((diferenca / 1000) % 60);
-            document.getElementById("contador").innerHTML = dias + " dias, " + horas + " horas, " + minutos + " minutos e " + segundos + " segundos";
-        }
-        setInterval(atualizarContador, 1000);
-        atualizarContador();
+        (function() {
+            // ===== CONFIGURAÇÃO DO CONTADOR (mesma data original) =====
+            const dataInicio = new Date("2026-04-12T00:00:00");
 
-        // ===== CORAÇÕES CAINDO =====
-        function criarCoracao() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 6000);
-        }
-        setInterval(criarCoracao, 300);
+            function atualizarContador() {
+                const agora = new Date();
+                const diferenca = agora - dataInicio;
 
-        // ===== FUNÇÃO DA MÚSICA ANTIGA =====
-        function tocarMusica() {
-            document.getElementById("musica").play();
-        }
-
-        // ===== PLAYER DE LETRA SINCRONIZADA (Dandelions) =====
-        const letraSincronizada = [
-            { tempo: 0, texto: "🎵 (Começo da música) 🎵", traducao: "" },
-            { tempo: 12.2, texto: "Maybe, it's the way you say my name", traducao: "Talvez seja o jeito que você diz o meu nome" },
-            { tempo: 18.4, texto: "Maybe, it's the way you play your game", traducao: "Talvez seja o jeito que você joga o seu jogo" },
-            { tempo: 23.2, texto: "But it's so good, I've never known anybody like you", traducao: "Mas é tão bom, eu nunca conheci ninguém como você" },
-            { tempo: 29.4, texto: "But it's so good, I've never dreamed of nobody like you", traducao: "Mas é tão bom, eu nunca sonhei com alguém como você" },
-            { tempo: 36.1, texto: "And I've heard of a love that comes once in a lifetime", traducao: "E eu ouvi falar de um amor que vem uma vez na vida" },
-            { tempo: 43.0, texto: "And I'm pretty sure that you are that love of mine", traducao: "E eu tenho certeza de que você é esse amor meu" },
-            { tempo: 48.5, texto: "'Cause I'm in a field of dandelions", traducao: "Porque estou em um campo de dentes-de-leão" },
-            { tempo: 52.5, texto: "Wishing on every one that you'll be mine, mine", traducao: "Desejando a cada um que você seja meu, meu" },
-            { tempo: 60.8, texto: "And I see forever in your eyes", traducao: "E eu vejo o infinito em seus olhos" },
-            { tempo: 64.5, texto: "I feel okay when I see you smile, smile", traducao: "Eu me sinto bem quando vejo você sorrir, sorrir" },
-            { tempo: 73.0, texto: "Wishing on dandelions all of the time", traducao: "Fazendo desejos a dentes-de-leão o tempo todo" },
-            { tempo: 76.2, texto: "Praying to God that one day you'll be mine", traducao: "Rezando a Deus que um dia você seja meu" },
-            { tempo: 79.1, texto: "Wishing on dandelions all of the time, all of the time", traducao: "Fazendo desejos a dentes-de-leão o tempo todo, o tempo todo" },
-            { tempo: 86.2, texto: "I think that you are the one for me", traducao: "Eu acho que você é o único pra mim" },
-            { tempo: 92.0, texto: "'Cause it gets so hard to breathe", traducao: "Porque fica tão difícil de respirar" },
-            { tempo: 97.1, texto: "When you're looking at me, I've never felt so alive and free", traducao: "Quando você está olhando pra mim, eu nunca me senti tão viva e livre" },
-            { tempo: 103.5, texto: "When you're looking at me, I've never felt so happy", traducao: "Quando você está olhando pra mim, eu nunca me senti tão feliz" },
-            { tempo: 110.1, texto: "And I've heard of a love that comes once in a lifetime", traducao: "E eu ouvi falar de um amor que vem uma vez na vida" },
-            { tempo: 116.6, texto: "And I'm pretty sure that you are that love of mine", traducao: "E eu tenho certeza de que você é esse amor meu" },
-            { tempo: 122.5, texto: "'Cause I'm in a field of dandelions", traducao: "Porque estou em um campo de dentes-de-leão" },
-            { tempo: 126.1, texto: "Wishing on every one that you'll be mine, mine", traducao: "Desejando a cada um que você seja meu, meu" },
-            { tempo: 134.6, texto: "And I see forever in your eyes", traducao: "E eu vejo o infinito em seus olhos" },
-            { tempo: 138.3, texto: "I feel okay, when I see you smile, smile", traducao: "Eu me sinto bem quando vejo você sorrir, sorrir" },
-            { tempo: 146.9, texto: "Wishing on dandelions all of the time", traducao: "Fazendo desejos a dentes-de-leão o tempo todo" },
-            { tempo: 150.1, texto: "Praying to God that one day you'll be mine", traducao: "Rezando a Deus que um dia você seja meu" },
-            { tempo: 153.1, texto: "Wishing on dandelions all of the time, all of the time", traducao: "Fazendo desejos a dentes-de-leão o tempo todo, o tempo todo" },
-            { tempo: 159.8, texto: "Dandelion, into the wind you go", traducao: "Dente-de-leão, pelo vento você vai" },
-            { tempo: 163.1, texto: "Won't you let my darling know?", traducao: "Você não vai deixar o meu querido saber?" },
-            { tempo: 166.2, texto: "Dandelion, into the wind you go", traducao: "Dente-de-leão, pelo vento você vai" },
-            { tempo: 169.1, texto: "Won't you let my darling know that?", traducao: "Você não vai deixar o meu querido saber que?" },
-            { tempo: 173.7, texto: "I'm in a field of dandelions", traducao: "Estou em um campo de dentes-de-leão" },
-            { tempo: 176.9, texto: "Wishing on every one that you'll be mine, mine", traducao: "Desejando a cada um que você seja meu, meu" },
-            { tempo: 185.3, texto: "And I see forever in your eyes", traducao: "E eu vejo o infinito em seus olhos" },
-            { tempo: 189.1, texto: "I feel okay when I see you smile, smile", traducao: "Eu me sinto bem quando vejo você sorrir, sorrir" },
-            { tempo: 197.8, texto: "Wishing on dandelions all of the time", traducao: "Fazendo desejos a dentes-de-leão o tempo todo" },
-            { tempo: 200.8, texto: "Praying to God that one day you'll be mine", traducao: "Rezando a Deus que um dia você seja meu" },
-            { tempo: 203.8, texto: "Wishing on dandelions all of the time, all of the time", traducao: "Fazendo desejos a dentes-de-leão o tempo todo, o tempo todo" },
-            { tempo: 210.8, texto: "I'm in a field of dandelions", traducao: "Estou em um campo de dentes-de-leão" },
-            { tempo: 213.7, texto: "Wishing on every one that you'll be mine, mine", traducao: "Desejando a cada um que você seja meu, meu" },
-            { tempo: 220.0, texto: "🎵 (Música termina) 🎵", traducao: "" }
-        ];
-
-        const audio = document.getElementById("audio-player");
-        const container = document.getElementById("letra-container");
-
-        // Cria as linhas na tela
-        letraSincronizada.forEach((linha, index) => {
-            const div = document.createElement("div");
-            div.classList.add("letra-linha");
-            div.id = `linha-${index}`;
-            div.innerHTML = `${linha.texto} ${linha.traducao ? `<span class="letra-traducao">${linha.traducao}</span>` : ''}`;
-            container.appendChild(div);
-        });
-
-        // Sincroniza com o tempo do áudio
-        audio.addEventListener("timeupdate", () => {
-            const tempoAtual = audio.currentTime;
-            let indiceAtivo = -1;
-
-            for (let i = 0; i < letraSincronizada.length; i++) {
-                if (tempoAtual >= letraSincronizada[i].tempo) {
-                    indiceAtivo = i;
-                } else {
-                    break; 
+                // Se a data ainda não chegou (caso raro), mostra zero
+                if (diferenca < 0) {
+                    document.getElementById("contador").innerHTML = "0 dias, 0 horas, 0 minutos e 0 segundos";
+                    return;
                 }
+
+                const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+                const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+                const segundos = Math.floor((diferenca / 1000) % 60);
+
+                // Formatação com dois dígitos para horas, minutos e segundos (opcional, mas fica bonito)
+                const horasStr = horas.toString().padStart(2, '0');
+                const minutosStr = minutos.toString().padStart(2, '0');
+                const segundosStr = segundos.toString().padStart(2, '0');
+
+                document.getElementById("contador").innerHTML = 
+                    `${dias} dias, ${horasStr} horas, ${minutosStr} minutos e ${segundosStr} segundos`;
             }
 
-            document.querySelectorAll(".letra-linha").forEach((el) => el.classList.remove("ativa"));
+            // Atualiza a cada segundo
+            setInterval(atualizarContador, 1000);
+            atualizarContador(); // executa imediatamente
 
-            if (indiceAtivo !== -1) {
-                const linhaAtiva = document.getElementById(`linha-${indiceAtivo}`);
-                if (linhaAtiva) {
-                    linhaAtiva.classList.add("ativa");
-                    linhaAtiva.scrollIntoView({ behavior: "smooth", block: "center" });
-                }
-            }
-        });
+            // ===== OPCIONAL: SALVAR O TEXTO DIGITADO NO NAVEGADOR (localStorage) =====
+            // Assim, se a pessoa recarregar a página, o texto não se perde.
+            const textarea = document.getElementById('meuTexto');
 
-        // ===== QUIZ =====
-        const perguntas = [
-            "Você me ama? ❤️",
-            "Você gosta de passar tempo comigo? 🥰",
-            "Eu faço você feliz? 💕",
-            "Você quer continuar criando memórias comigo? ✨",
-            "Então só falta uma última pergunta... 💌",
-            "Alice, você aceita namorar comigo? ❤️💍"
-        ];
+            // Carrega o texto salvo anteriormente, se existir
+            const textoSalvo = localStorage.getItem('textoAlice');
+            if (textoSalvo) {
+                textarea.value = textoSalvo;
+            }
 
-        let perguntaAtual = 0;
+            // Salva sempre que o conteúdo mudar
+            textarea.addEventListener('input', () => {
+                localStorage.setItem('textoAlice', textarea.value);
+            });
 
-        function proximaPergunta() {
-            perguntaAtual++;
-            if (perguntaAtual < perguntas.length) {
-                document.getElementById("pergunta").innerHTML = perguntas[perguntaAtual];
-            }
-            if (perguntaAtual === perguntas.length - 1) {
-                document.querySelector("#quizNamoro button:nth-child(2)").innerHTML = "Sim, eu aceito ❤️";
-                document.querySelector("#quizNamoro button:nth-child(3)").innerHTML = "Claro que aceito 💍";
-            }
-            if (perguntaAtual >= perguntas.length) {
-                const quiz = document.getElementById("quizNamoro");
-                quiz.classList.add("celebracao");
-                quiz.innerHTML = "<h1>❤️ Alice, você oficialmente é minha namorada ❤️</h1><p>Você acabou de me fazer a pessoa mais feliz do mundo.</p><h2>❤️ Eu te amo infinitamente ❤️</h2>";
-                for (let i = 0; i < 80; i++) {
-                    setTimeout(() => {
-                        const heart = document.createElement("div");
-                        heart.classList.add("heart");
-                        heart.innerHTML = ["❤️", "💖", "💕", "💗"][Math.floor(Math.random() * 4)];
-                        heart.style.left = Math.random() * 100 + "vw";
-                        heart.style.fontSize = (20 + Math.random() * 25) + "px";
-                        document.body.appendChild(heart);
-                        setTimeout(() => { heart.remove(); }, 6000);
-                    }, i * 40);
-                }
-            }
-        }
+            // (Opcional: limpar o localStorage quando quiser — só descomente se necessário)
+            // localStorage.removeItem('textoAlice');
+        })();
     </script>
 
 </body>
