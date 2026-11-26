@@ -7,23 +7,70 @@
     <style>
         * { box-sizing: border-box; }
         p, h2, h3, h4, span, div { color: #ff4da6; }
+        
+        /* ⬅️ ALTERADO: Preparando o body para as camadas de fundo */
         body {
             margin: 0; min-height: 100vh;
-            /* ⬅️ ALTERADO: fundo com imagem + degradê por cima */
+            background-color: #050505; /* Fundo base caso a imagem falhe */
+            color: #ffb6d9; font-family: Arial, sans-serif;
+            text-align: center; overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ⬅️ NOVO: Fundo com imagem */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
             background-image:
                 linear-gradient(135deg, rgba(5,5,5,0.75), rgba(26,0,16,0.75), rgba(255,77,166,0.35)),
                 url('background.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             background-repeat: no-repeat;
-            color: #ffb6d9; font-family: Arial, sans-serif;
-            text-align: center; overflow-x: hidden;
+            z-index: -2; /* Fica atrás de tudo */
         }
+
+        /* ⬅️ NOVO: Aurora animada rosa mais claro */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent 20%, rgba(255, 143, 198, 0.15) 40%, rgba(255, 77, 166, 0.25) 60%, rgba(218, 112, 214, 0.15) 80%, transparent 100%);
+            background-size: 200% 200%;
+            animation: aurora 15s ease-in-out infinite alternate;
+            z-index: -1; /* Fica acima da imagem, abaixo do conteúdo */
+            pointer-events: none;
+        }
+
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* ⬅️ NOVO: Partículas brilhantes subindo */
+        .particula {
+            position: fixed;
+            bottom: -10px;
+            width: 4px; height: 4px;
+            background: #ff8ac8;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 138, 200, 0.8), 0 0 20px 4px rgba(218, 112, 214, 0.4);
+            pointer-events: none;
+            animation: subir linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes subir {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-110vh) scale(0); opacity: 0; }
+        }
+
         .card {
             width: 90%; max-width: 800px; margin: 50px auto;
-            padding: 30px; background: rgba(0, 0, 0, 0.55);
+            padding: 30px; background: rgba(0, 0, 0, 0.65); /* Um pouco mais escuro para ler melhor com a aurora */
             border-radius: 25px; box-shadow: 0 0 30px #ff4da6;
+            position: relative; z-index: 2; /* Fica acima das partículas e do fundo */
         }
         h1 { color: #ff4da6; font-size: 42px; margin: 0 0 25px; }
         p { font-size: 20px; line-height: 1.6; }
@@ -67,9 +114,8 @@
 
         .heart {
             position: fixed; top: -10px;
-            /* ⬅️ ALTERADO: removi color fixa porque emojis já têm cor */
             font-size: 24px; animation: cair 6s linear infinite;
-            pointer-events: none;
+            pointer-events: none; z-index: 1;
         }
         @keyframes cair { to { transform: translateY(110vh); opacity: 0; } }
 
@@ -148,13 +194,13 @@
 
     <div class="card">
 
-        <h1>Para a alice ❤️</h1>
+        <h1>Para a alice 💖</h1>
         <p class="introducao">Minha princesa. Você mudou minha forma de pensar e ver o amor, obrigado por isso. Você é perfeitamente esplêndida.</p>
 
         <div class="contador-section">
             <h2>Estamos juntinhos há:</h2>
             <div id="contador"></div>
-            <h2>Nós juntinhos bem fofos ❤️ 📸</h2>
+            <h2>Nós juntinhos bem fofos 💖 📸</h2>
             <div class="galeria-fotos">
                 <img src="foto1.jpg" alt="Nossa foto 1" class="foto-casal">
                 <img src="foto2.png" alt="Nossa foto 2" class="foto-casal">
@@ -162,7 +208,7 @@
             </div>
             
             <div class="caixa-texto">
-                <h2>E não acabou ❤️ </h2>
+                <h2>E não acabou 💖 </h2>
                 <p> Ainda é preciso dedicar uma música para o amor da minha vida! por que você merece, nunca canso de demonstrar meu amor por você! </p>
             </div>
 
@@ -184,13 +230,13 @@
         </div>
 
         <div class="caixa-texto">
-            <h2>❤️ Eu te amo... ❤️</h2>
-            <p>E se você está lendo isso agora, quero que saiba que cada palavra que escrevi aqui saiu do fundo do meu coração. Não importa o que aconteça, onde você esteja ou o que o futuro nos reserve, você sempre terá um lugar especial em mim. Eu espero que você fique bem com essa sua decisão e que as risadas sejam mais frequentes que as lágrimas, mesmo nos dias mais difíceis. Obrigado por existir e por ter feito parte da minha vida e história. ❤️ Queria que nunca tivesse um fim, mas isso nunca depende só de uma pessoa, infelizmente relacionamentos é complicado e depende de duas pessoas querer. Apesar de tudo entendo sua decisão, mesmo sendo ruim, nem todo mundo tá preparado para viver a vida de adulto e conquistar a independencia sozin. Então fique bem de verdade e seja feliz. Eu te amo. Para sempre minha princesa do meu coração!</p>
+            <h2>💖 Eu te amo... 💖</h2>
+            <p>E se você está lendo isso agora, quero que saiba que cada palavra que escrevi aqui saiu do fundo do meu coração. Não importa o que aconteça, onde você esteja ou o que o futuro nos reserve, você sempre terá um lugar especial em mim. Eu espero que você fique bem com essa sua decisão e que as risadas sejam mais frequentes que as lágrimas, mesmo nos dias mais difíceis. Obrigado por existir e por ter feito parte da minha vida e história. 💖 Queria que nunca tivesse um fim, mas isso nunca depende só de uma pessoa, infelizmente relacionamentos é complicado e depende de duas pessoas querer. Apesar de tudo entendo sua decisão, mesmo sendo ruim, nem todo mundo tá preparado para viver a vida de adulto e conquistar a independencia sozin. Então fique bem de verdade e seja feliz. Eu te amo. Para sempre minha princesa do meu coração!</p>
         </div>
 
         <div class="caixa-texto">
-            <h2>O textinho que eu prometi nunca tirar daqui caso você precise ❤️</h2>
-            <p>Alice... eu nunca imaginei que seria você a mulher da minha vida. A pessoa que eu amo muito. Não imaginava que você era essa pessoa tão incrível e fofa... pequenos detalhes que me fizeram criar sentimentos por você. Seu jeitinho único de ser me encantou de verdade! sou muito grato por você ter sido curiosa, por ter me escolhido para acreditar no amor novamente, eu valorizo tudo que você fez e faz por mim, me esforço para te retribuir da melhor maneira, com muito carinho e amor te priorizando sempre. Cada pequeno momento nosso é incrível, relembrando as coisas do passado, conversando sobre qualquer coisa e sempre rindo e se divertindo... zoando as pessoas, lembrando dos nossos momentos fofinhos juntos, como se conhecemos e se aproximamos, tudo tão simples mas se tornam tão especial quando é contigo... inexplicavel essa sensação, só tenho a te agradecer por tudo e todo esforço. Saiba que independente do quão difícil as coisas podem ser e vão ser, eu sempre vou estar aqui, sempre irei fazer o possível e o impossivel para tudo dar certo. Por que eu te amo de verdade! não importa o quão dificil alguma coisa seja, eu apenas peço que você confie no processo e em mim, nada é impossível, ainda mais com duas pessoas fazendo e se esforçando isso se torna mais do que possivel, vira a realidade! o tempo pode ser duro as vezes mas também é necessário, coisas que começam rápido, tendem a acabar rápido, dito isso nada melhor que algo bem estruturado respeitando o tempo de cada um, para que seja sem margem para erros. Independente de qualquer desentendimento ou briga boba, eu sempre vou te amar e não vou desistir de você! por mais que me deixe chateado, eu não vou te deixar, você já é minha família! minha mulher que eu tanto amo! não tenha dúvidas do meu amor por você! sempre que se sentir com medo, insegura ou assustada com nós, se lembre disso desse texto, inclusive ele vai ficar aqui para sempre! com o intuíto de te acalmar, tranquilizar, sempre que você se sentir assim, leia ele, varias vezes! e lembre que eu vou sempre te escolher, escolher amar você, ficar com você. Não importa o tempo que demore, não tenho pressa para nada, <span class="destaque">O amor não tem pressa... ele sabe esperar, sabe permanecer e, quando é verdadeiro, encontra seu caminho mesmo nos dias difíceis.</span> então minha princesa espero que você entenda o quanto especial você é para mim. <span class="destaque">EU TE AMO MUITO...</span> nunca duvide disso! tudo que eu disse é de coração para você tentar entender e se sentir mais tranquila com tudo. Sempre estarei ao seu lado dando o meu melhor tá bom? Eu te amo independente de qualquer coisa! você é minha princesinha! ❤️</p>
+            <h2>O textinho que eu prometi nunca tirar daqui caso você precise 💖</h2>
+            <p>Alice... eu nunca imaginei que seria você a mulher da minha vida. A pessoa que eu amo muito. Não imaginava que você era essa pessoa tão incrível e fofa... pequenos detalhes que me fizeram criar sentimentos por você. Seu jeitinho único de ser me encantou de verdade! sou muito grato por você ter sido curiosa, por ter me escolhido para acreditar no amor novamente, eu valorizo tudo que você fez e faz por mim, me esforço para te retribuir da melhor maneira, com muito carinho e amor te priorizando sempre. Cada pequeno momento nosso é incrível, relembrando as coisas do passado, conversando sobre qualquer coisa e sempre rindo e se divertindo... zoando as pessoas, lembrando dos nossos momentos fofinhos juntos, como se conhecemos e se aproximamos, tudo tão simples mas se tornam tão especial quando é contigo... inexplicavel essa sensação, só tenho a te agradecer por tudo e todo esforço. Saiba que independente do quão difícil as coisas podem ser e vão ser, eu sempre vou estar aqui, sempre irei fazer o possível e o impossivel para tudo dar certo. Por que eu te amo de verdade! não importa o quão dificil alguma coisa seja, eu apenas peço que você confie no processo e em mim, nada é impossível, ainda mais com duas pessoas fazendo e se esforçando isso se torna mais do que possivel, vira a realidade! o tempo pode ser duro as vezes mas também é necessário, coisas que começam rápido, tendem a acabar rápido, dito isso nada melhor que algo bem estruturado respeitando o tempo de cada um, para que seja sem margem para erros. Independente de qualquer desentendimento ou briga boba, eu sempre vou te amar e não vou desistir de você! por mais que me deixe chateado, eu não vou te deixar, você já é minha família! minha mulher que eu tanto amo! não tenha dúvidas do meu amor por você! sempre que se sentir com medo, insegura ou assustada com nós, se lembre disso desse texto, inclusive ele vai ficar aqui para sempre! com o intuíto de te acalmar, tranquilizar, sempre que você se sentir assim, leia ele, varias vezes! e lembre que eu vou sempre te escolher, escolher amar você, ficar com você. Não importa o tempo que demore, não tenho pressa para nada, <span class="destaque">O amor não tem pressa... ele sabe esperar, sabe permanecer e, quando é verdadeiro, encontra seu caminho mesmo nos dias difíceis.</span> então minha princesa espero que você entenda o quanto especial você é para mim. <span class="destaque">EU TE AMO MUITO...</span> nunca duvide disso! tudo que eu disse é de coração para você tentar entender e se sentir mais tranquila com tudo. Sempre estarei ao seu lado dando o meu melhor tá bom? Eu te amo independente de qualquer coisa! você é minha princesinha! 💖</p>
         </div>
 
         <div class="espaco-digitar">
@@ -199,16 +245,16 @@
         </div>
 
         <div id="quizNamoro" class="quiz-caixa">
-            <h2 id="pergunta">Você me ama? ❤️</h2>
-            <button onclick="proximaPergunta()">Sim ❤️</button>
-            <button onclick="proximaPergunta()">Claro que sim ❤️</button>
+            <h2 id="pergunta">Você me ama? 💖</h2>
+            <button onclick="proximaPergunta()">Sim 💖</button>
+            <button onclick="proximaPergunta()">Claro que sim 💖</button>
         </div>
 
         <br>
 
         <!-- BOTÃO DA MÚSICA ANTIGA (musica.mp3) -->
         <button onclick="tocarMusica()">
-            Nossa música! Saudades de você ❤️ 🎵
+            Nossa música! Saudades de você 💖 🎵
         </button>
 
         <audio id="musica" loop>
@@ -232,8 +278,30 @@
         setInterval(atualizarContador, 1000);
         atualizarContador();
 
-        // ===== SISTEMA DE EMOJIS CAINDO ⬅️ ALTERADO =====
-        let modoEmojis = ["❤️", "🌸"]; // padrão: coração + flor de cerejeira
+        // ===== NOVO: PARTÍCULAS DE LUZ SUBINDO =====
+        function criarParticula() {
+            const particula = document.createElement("div");
+            particula.classList.add("particula");
+            particula.style.left = Math.random() * 100 + "vw";
+            
+            // Tamanhos e velocidades aleatórias para dar um efeito mais natural
+            const tamanho = Math.random() * 3 + 2; // de 2px a 5px
+            particula.style.width = tamanho + "px";
+            particula.style.height = tamanho + "px";
+            
+            const duracao = Math.random() * 4 + 4; // de 4s a 8s
+            particula.style.animationDuration = duracao + "s";
+            
+            document.body.appendChild(particula);
+            
+            // Remove do HTML após terminar a animação para não pesar a página
+            setTimeout(() => { particula.remove(); }, duracao * 1000);
+        }
+        // Cria uma partícula a cada 200 milissegundos
+        setInterval(criarParticula, 200);
+
+        // ===== SISTEMA DE EMOJIS CAINDO =====
+        let modoEmojis = ["💖", "🌸"]; // ⬅️ ALTERADO: Coração rosa no padrão
         let intervaloCoracao = null;
 
         function criarCoracao() {
@@ -252,27 +320,27 @@
             intervaloCoracao = setInterval(criarCoracao, 300);
         }
 
-        iniciarChuva(); // começa com ❤️ + 🌸
+        iniciarChuva(); // começa com 💖 + 🌸
 
-        // ===== FUNÇÃO DA MÚSICA ANTIGA (com ✨) ⬅️ ALTERADO =====
+        // ===== FUNÇÃO DA MÚSICA ANTIGA (com ✨) =====
         function tocarMusica() {
             document.getElementById("musica").play();
-            modoEmojis = ["❤️", "✨"]; // coração + estrelinha
+            modoEmojis = ["💖", "✨"]; // ⬅️ ALTERADO: Coração rosa + estrelinha
         }
 
-        // ===== TROCA DE EMOJIS PELO PLAYER DANDELIONS ⬅️ NOVO =====
+        // ===== TROCA DE EMOJIS PELO PLAYER DANDELIONS =====
         const audioDandelions = document.getElementById("audio-player");
 
         audioDandelions.addEventListener("play", () => {
-            modoEmojis = ["❤️", "🌼"]; // coração + dente-de-leão
+            modoEmojis = ["💖", "🌼"]; // ⬅️ ALTERADO: Coração rosa + dente-de-leão
         });
 
         audioDandelions.addEventListener("pause", () => {
-            modoEmojis = ["❤️", "🌸"]; // volta ao padrão
+            modoEmojis = ["💖", "🌸"]; // ⬅️ ALTERADO
         });
 
         audioDandelions.addEventListener("ended", () => {
-            modoEmojis = ["❤️", "🌸"]; // volta ao padrão quando terminar
+            modoEmojis = ["💖", "🌸"]; // ⬅️ ALTERADO
         });
 
         // ===== PLAYER DE LETRA SINCRONIZADA (Dandelions) =====
@@ -358,12 +426,12 @@
 
         // ===== QUIZ =====
         const perguntas = [
-            "Você me ama? ❤️",
+            "Você me ama? 💖",
             "Você gosta de passar tempo comigo? 🥰",
             "Eu faço você feliz? 💕",
             "Você quer continuar criando memórias comigo? ✨",
             "Então só falta uma última pergunta... 💌",
-            "Alice, você aceita namorar comigo? ❤️💍"
+            "Alice, você aceita namorar comigo? 💖💍"
         ];
 
         let perguntaAtual = 0;
@@ -374,27 +442,18 @@
                 document.getElementById("pergunta").innerHTML = perguntas[perguntaAtual];
             }
             if (perguntaAtual === perguntas.length - 1) {
-                document.querySelector("#quizNamoro button:nth-child(2)").innerHTML = "Sim, eu aceito ❤️";
+                document.querySelector("#quizNamoro button:nth-child(2)").innerHTML = "Sim, eu aceito 💖";
                 document.querySelector("#quizNamoro button:nth-child(3)").innerHTML = "Claro que aceito 💍";
             }
             if (perguntaAtual >= perguntas.length) {
                 const quiz = document.getElementById("quizNamoro");
                 quiz.classList.add("celebracao");
-                quiz.innerHTML = "<h1>❤️ Alice, você oficialmente é minha namorada ❤️</h1><p>Você acabou de me fazer a pessoa mais feliz do mundo.</p><h2>❤️ Eu te amo infinitamente ❤️</h2>";
+                quiz.innerHTML = "<h1>💖 Alice, você oficialmente é minha namorada 💖</h1><p>Você acabou de me fazer a pessoa mais feliz do mundo.</p><h2>💖 Eu te amo infinitamente 💖</h2>";
                 for (let i = 0; i < 80; i++) {
                     setTimeout(() => {
                         const heart = document.createElement("div");
                         heart.classList.add("heart");
-                        heart.innerHTML = ["❤️", "💖", "💕", "💗"][Math.floor(Math.random() * 4)];
+                        heart.innerHTML = ["💖", "💕", "💗", "🌸"][Math.floor(Math.random() * 4)]; // ⬅️ ALTERADO: Emojis rosa na celebração
                         heart.style.left = Math.random() * 100 + "vw";
                         heart.style.fontSize = (20 + Math.random() * 25) + "px";
-                        document.body.appendChild(heart);
-                        setTimeout(() => { heart.remove(); }, 6000);
-                    }, i * 40);
-                }
-            }
-        }
-    </script>
-
-</body>
-</html>
+                        document.body.appendChild
