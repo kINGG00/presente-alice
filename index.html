@@ -211,19 +211,22 @@
     </div>
 
     <script>
-        // ===== CONTADOR =====
+        // ===== CONTADOR (TRAVADO) =====
+        // A data de início é fixa. O contador NÃO avança mais com o tempo real:
+        // ele calcula a diferença entre uma data fixa de "agora" e a dataInicio.
+        // Para mudar o valor exibido, altere a constante "dataTravada" abaixo.
         const dataInicio = new Date("2026-04-12T00:00:00");
+        const dataTravada = new Date("2026-08-12T00:00:00"); // <-- valor congelado (ex: 4 meses depois)
+
         function atualizarContador() {
-            const agora = new Date();
-            const diferenca = agora - dataInicio;
+            const diferenca = dataTravada - dataInicio;
             const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
             const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
             const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
             const segundos = Math.floor((diferenca / 1000) % 60);
             document.getElementById("contador").innerHTML = dias + " dias, " + horas + " horas, " + minutos + " minutos e " + segundos + " segundos";
         }
-        setInterval(atualizarContador, 1000);
-        atualizarContador();
+        atualizarContador(); // roda uma vez e fica travado (sem setInterval)
 
         // ===== CORAÇÕES CAINDO =====
         function criarCoracao() {
