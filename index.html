@@ -8,16 +8,16 @@
         * { box-sizing: border-box; }
         p, h2, h3, h4, span, div { color: #ff4da6; }
         
-        /* ⬅️ ALTERADO: Preparando o body para as camadas de fundo */
+        /* Fundo base */
         body {
             margin: 0; min-height: 100vh;
-            background-color: #050505; /* Fundo base caso a imagem falhe */
+            background-color: #050505;
             color: #ffb6d9; font-family: Arial, sans-serif;
             text-align: center; overflow-x: hidden;
             position: relative;
         }
 
-        /* ⬅️ NOVO: Fundo com imagem */
+        /* Camada 1: Imagem de fundo */
         body::before {
             content: '';
             position: fixed;
@@ -28,10 +28,10 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            z-index: -2; /* Fica atrás de tudo */
+            z-index: -2;
         }
 
-        /* ⬅️ NOVO: Aurora animada rosa mais claro */
+        /* Camada 2: Aurora animada */
         body::after {
             content: '';
             position: fixed;
@@ -39,7 +39,7 @@
             background: linear-gradient(45deg, transparent 20%, rgba(255, 143, 198, 0.15) 40%, rgba(255, 77, 166, 0.25) 60%, rgba(218, 112, 214, 0.15) 80%, transparent 100%);
             background-size: 200% 200%;
             animation: aurora 15s ease-in-out infinite alternate;
-            z-index: -1; /* Fica acima da imagem, abaixo do conteúdo */
+            z-index: -1;
             pointer-events: none;
         }
 
@@ -48,7 +48,7 @@
             100% { background-position: 100% 50%; }
         }
 
-        /* ⬅️ NOVO: Partículas brilhantes subindo */
+        /* Partículas de luz subindo */
         .particula {
             position: fixed;
             bottom: -10px;
@@ -68,10 +68,11 @@
 
         .card {
             width: 90%; max-width: 800px; margin: 50px auto;
-            padding: 30px; background: rgba(0, 0, 0, 0.65); /* Um pouco mais escuro para ler melhor com a aurora */
+            padding: 30px; background: rgba(0, 0, 0, 0.65);
             border-radius: 25px; box-shadow: 0 0 30px #ff4da6;
-            position: relative; z-index: 2; /* Fica acima das partículas e do fundo */
+            position: relative; z-index: 2;
         }
+        
         h1 { color: #ff4da6; font-size: 42px; margin: 0 0 25px; }
         p { font-size: 20px; line-height: 1.6; }
         .introducao { text-align: left; margin-bottom: 30px; }
@@ -112,6 +113,7 @@
             border-radius: 15px; background: transparent !important;
         }
 
+        /* Emojis caindo */
         .heart {
             position: fixed; top: -10px;
             font-size: 24px; animation: cair 6s linear infinite;
@@ -142,7 +144,7 @@
         }
         .celebracao { animation: celebrar 1s ease-in-out; }
 
-        /* ===== PLAYER DE LETRA ===== */
+        /* PLAYER DE LETRA */
         .player-letra {
             width: 100%; max-width: 750px; margin: 30px auto;
             padding: 25px; background: rgba(0, 0, 0, 0.6);
@@ -278,30 +280,27 @@
         setInterval(atualizarContador, 1000);
         atualizarContador();
 
-        // ===== NOVO: PARTÍCULAS DE LUZ SUBINDO =====
+        // ===== PARTÍCULAS DE LUZ SUBINDO =====
         function criarParticula() {
             const particula = document.createElement("div");
             particula.classList.add("particula");
             particula.style.left = Math.random() * 100 + "vw";
             
-            // Tamanhos e velocidades aleatórias para dar um efeito mais natural
-            const tamanho = Math.random() * 3 + 2; // de 2px a 5px
+            const tamanho = Math.random() * 3 + 2;
             particula.style.width = tamanho + "px";
             particula.style.height = tamanho + "px";
             
-            const duracao = Math.random() * 4 + 4; // de 4s a 8s
+            const duracao = Math.random() * 4 + 4;
             particula.style.animationDuration = duracao + "s";
             
             document.body.appendChild(particula);
             
-            // Remove do HTML após terminar a animação para não pesar a página
             setTimeout(() => { particula.remove(); }, duracao * 1000);
         }
-        // Cria uma partícula a cada 200 milissegundos
         setInterval(criarParticula, 200);
 
         // ===== SISTEMA DE EMOJIS CAINDO =====
-        let modoEmojis = ["💖", "🌸"]; // ⬅️ ALTERADO: Coração rosa no padrão
+        let modoEmojis = ["💖", "🌸"]; // Coração rosa + Flor de cerejeira (Sem música)
         let intervaloCoracao = null;
 
         function criarCoracao() {
@@ -320,27 +319,27 @@
             intervaloCoracao = setInterval(criarCoracao, 300);
         }
 
-        iniciarChuva(); // começa com 💖 + 🌸
+        iniciarChuva(); // Inicia a chuva padrão assim que abre o site
 
-        // ===== FUNÇÃO DA MÚSICA ANTIGA (com ✨) =====
+        // ===== FUNÇÃO DA MÚSICA ANTIGA =====
         function tocarMusica() {
             document.getElementById("musica").play();
-            modoEmojis = ["💖", "✨"]; // ⬅️ ALTERADO: Coração rosa + estrelinha
+            modoEmojis = ["💖", "✨"]; // Coração rosa + Estrelinhas (Música do final)
         }
 
         // ===== TROCA DE EMOJIS PELO PLAYER DANDELIONS =====
         const audioDandelions = document.getElementById("audio-player");
 
         audioDandelions.addEventListener("play", () => {
-            modoEmojis = ["💖", "🌼"]; // ⬅️ ALTERADO: Coração rosa + dente-de-leão
+            modoEmojis = ["💖", "🌼"]; // Coração rosa + Dente-de-leão (Música Dandelions)
         });
 
         audioDandelions.addEventListener("pause", () => {
-            modoEmojis = ["💖", "🌸"]; // ⬅️ ALTERADO
+            modoEmojis = ["💖", "🌸"]; // Volta ao padrão se pausar
         });
 
         audioDandelions.addEventListener("ended", () => {
-            modoEmojis = ["💖", "🌸"]; // ⬅️ ALTERADO
+            modoEmojis = ["💖", "🌸"]; // Volta ao padrão se terminar
         });
 
         // ===== PLAYER DE LETRA SINCRONIZADA (Dandelions) =====
@@ -453,7 +452,16 @@
                     setTimeout(() => {
                         const heart = document.createElement("div");
                         heart.classList.add("heart");
-                        heart.innerHTML = ["💖", "💕", "💗", "🌸"][Math.floor(Math.random() * 4)]; // ⬅️ ALTERADO: Emojis rosa na celebração
+                        heart.innerHTML = ["💖", "💕", "💗", "🌸"][Math.floor(Math.random() * 4)];
                         heart.style.left = Math.random() * 100 + "vw";
                         heart.style.fontSize = (20 + Math.random() * 25) + "px";
-                        document.body.appendChild
+                        document.body.appendChild(heart);
+                        setTimeout(() => { heart.remove(); }, 6000);
+                    }, i * 40);
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
